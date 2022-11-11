@@ -1,5 +1,16 @@
-@import url(../vendor/normalize.css);
-@import url(../blocks/page/page.css);
+/* Resources */
+@import url('../vendor/normalize.css');
+@import url('../vendor/fonts/fonts.css');
+
+/* Page */
+@import url('../blocks/page/page.css');
+
+
+
+
+
+
+
 
 /* TEMP styles*/
 * {
