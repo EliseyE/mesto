@@ -1,2 +1,11 @@
 @import url(../vendor/normalize.css);
 @import url(../blocks/page/page.css);
+
+/* TEMP styles*/
+* {
+  outline: 1px solid rgba(255, 0, 0, 0.815);
+}
+
+.page {
+  outline: 3px dashed rgba(240, 227, 227, 0.815);
+}
