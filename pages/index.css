@@ -5,6 +5,7 @@
 /* Page */
 @import url('../blocks/page/page.css');
 @import url('../blocks/page/__content/page__content.css');
+@import url('../blocks/page/__footer/page__footer.css');
 
 /* Header */
 @import url('../blocks/header/header.css');
@@ -32,6 +33,10 @@
 @import url('../blocks/elements/__like-button/elements__like-button.css');
 @import url('../blocks/elements/__like-button/_active/element__like-button_active.css');
 @import url('../blocks/elements/__list/elements__list.css');
+
+/* Footer */
+@import url('../blocks/footer/footer.css');
+@import url('../blocks/footer/__copyright/footer__copyright.css');
 
 
 

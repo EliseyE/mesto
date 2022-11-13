@@ -1,0 +1,11 @@
+.page__footer {
+  margin: 0;
+  padding: 0 calc(100%*(200/1280));
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 540px) {
+  .page__footer {
+    padding: 0 calc(100%*(19/320));
+  }
+}
