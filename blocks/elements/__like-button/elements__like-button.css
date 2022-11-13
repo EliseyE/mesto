@@ -6,7 +6,6 @@
   background-image: url('../../../images/element__like-button.svg');
   background-position: center;
   background-repeat: no-repeat;
-  align-self: center;
   transition: .35s;
 
 }

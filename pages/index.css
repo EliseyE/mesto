@@ -31,6 +31,7 @@
 @import url('../blocks/elements/__description/elements__description.css');
 @import url('../blocks/elements/__like-button/elements__like-button.css');
 @import url('../blocks/elements/__like-button/_active/element__like-button_active.css');
+@import url('../blocks/elements/__list/elements__list.css');
 
 
 
@@ -38,9 +39,9 @@
 
 
 /* TEMP styles */
-* {
+/* * {
   outline: 1px solid rgba(218, 112, 214, 0.733);
-}
+} */
 
 .page {
   outline: 3px dashed rgba(240, 227, 227, 0.815);
