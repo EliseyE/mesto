@@ -1,8 +1,8 @@
-/* Resources */
+/* resources */
 @import url('../vendor/normalize.css');
 @import url('../vendor/fonts/fonts.css');
 
-/* Page */
+/* page */
 @import url('../blocks/page/page.css');
 @import url('../blocks/page/__content/page__content.css');
 @import url('../blocks/page/__footer/page__footer.css');
@@ -10,14 +10,14 @@
 @import url('../blocks/page/__header/page__header.css');
 
 
-/* Header */
+/* header */
 @import url('../blocks/header/header.css');
 @import url('../blocks/header/__logo/header__logo.css');
 
-/* Content */
+/* content */
 @import url('../blocks/content/content.css');
 
-/* Profile */
+/* profile */
 @import url('../blocks/profile/profile.css');
 @import url('../blocks/profile/__add-button/profile__add-button.css');
 @import url('../blocks/profile/__avatar/profile__avatar.css');
@@ -27,21 +27,21 @@
 @import url('../blocks/profile/__description/profile__description.css');
 @import url('../blocks/profile/__edit-button/profile__edit-button.css');
 
-/* Elements */
+/* elements */
 @import url('../blocks/elements/elements.css');
 @import url('../blocks/elements/__element/elements__element.css');
 @import url('../blocks/elements/__image/elements__image.css');
 @import url('../blocks/elements/__info/elements__info.css');
 @import url('../blocks/elements/__description/elements__description.css');
 @import url('../blocks/elements/__like-button/elements__like-button.css');
-@import url('../blocks/elements/__like-button/_active/element__like-button_active.css');
+@import url('../blocks/elements/__like-button/_active/elements__like-button_active.css');
 @import url('../blocks/elements/__list/elements__list.css');
 
-/* Footer */
+/* footer */
 @import url('../blocks/footer/footer.css');
 @import url('../blocks/footer/__copyright/footer__copyright.css');
 
-/* Edit form */
+/* edit form */
 @import url('../blocks/edit-form/edit-form.css');
 @import url('../blocks/edit-form/__form/edit-form__form.css');
 @import url('../blocks/edit-form/__close-button/edit-form__close-button.css');
@@ -49,15 +49,4 @@
 @import url('../blocks/edit-form/__input-name/edit-form__input-name.css');
 @import url('../blocks/edit-form/__input-description/edit-form__input-description.css');
 @import url('../blocks/edit-form/__submit-button/edit-form__submit-button.css');
-
-
-
-
-/* TEMP styles */
-* {
-  outline: 1px solid rgba(218, 112, 214, 0.733);
-}
-
-.page {
-  outline: 3px dashed rgba(240, 227, 227, 0.815);
-}
+@import url('../blocks/edit-form/_is-opened/edit-form_is-opened.css');
