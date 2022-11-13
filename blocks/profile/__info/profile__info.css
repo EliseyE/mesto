@@ -9,17 +9,23 @@
   align-self: center;
 }
 
+@media screen and (max-width: 984px) {
+  .profile__info  {
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .profile__info  {
+    padding: 0 10px;
+  }
+}
+
 @media screen and (max-width: 540px) {
   .profile__info  {
     grid-template-columns: minmax(189px, max-content) min-content;
     column-gap: 10px;
     row-gap: 8.5px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .profile__info  {
-    justify-self: start;
-    margin-left: 46px;
+    padding: 0 calc(100%*(19/282)) 0 calc(100%*(46/282));
   }
 }
