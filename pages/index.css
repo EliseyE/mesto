@@ -6,6 +6,9 @@
 @import url('../blocks/page/page.css');
 @import url('../blocks/page/__content/page__content.css');
 @import url('../blocks/page/__footer/page__footer.css');
+@import url('../blocks/page/__header-area/page__header-area.css');
+@import url('../blocks/page/__header/page__header.css');
+
 
 /* Header */
 @import url('../blocks/header/header.css');
@@ -51,9 +54,9 @@
 
 
 /* TEMP styles */
-/* * {
+* {
   outline: 1px solid rgba(218, 112, 214, 0.733);
-} */
+}
 
 .page {
   outline: 3px dashed rgba(240, 227, 227, 0.815);
