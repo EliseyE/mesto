@@ -1,0 +1,27 @@
+.edit-form__close-button {
+  width: 32px;
+  height: 32px;
+  background-image: url('../../../images/edit-form__close-button.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: calc(50vh - (165px + 32px + 8px));
+  right: calc(50vw - (215px + 32px + 8px));
+  border: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: opacity .35s;
+}
+
+.edit-form__close-button:hover {
+  opacity: .6;
+}
+
+@media screen and (max-width: 845px) {
+  .edit-form__close-button {
+    width: 20px;
+    height: 20px;
+    top: calc(50vh - (141px + 22px + 32px));
+    right: calc(50vw - 161px + 22px);
+  }
+}
