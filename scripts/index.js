@@ -30,11 +30,11 @@ const closeEditForm = function () {
 
 editFormCloseButtonElement.addEventListener('click', closeEditForm);
 
-// submit
+// submit and close edit form
 function editFormSubmitHandler (evt) {
     evt.preventDefault();
 
-    if ((editFormInputFieldName.value !== '') && (editFormInputFieldName.value !== '')) {
+    if ((editFormInputFieldName.value !== '') && (editFormInputFieldDescription.value !== '')) {
       personName.textContent = editFormInputFieldName.value;
       personDescription.textContent = editFormInputFieldDescription.value;
       closeEditForm();
@@ -43,7 +43,7 @@ function editFormSubmitHandler (evt) {
 
 editFormElement.addEventListener('submit', editFormSubmitHandler);
 
-//like
+//get like
 const elementsElement = document.querySelector('.elements');
 const elementLikeButton = elementsElement.querySelectorAll('.elements__like-button');
 

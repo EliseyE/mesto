@@ -12,10 +12,10 @@
   border-radius: 10px;
 }
 
-@media screen and (max-width: 845px) {
+@media screen and (max-width: 650px) {
   .edit-form__form {
     width: 282px;
     height: 322px;
-    padding: 25px 22px;
+    padding: 26px 22px;
   }
 }

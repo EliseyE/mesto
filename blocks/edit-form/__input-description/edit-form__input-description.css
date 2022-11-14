@@ -1,5 +1,5 @@
 .edit-form__input-description {
-  margin: 0 0 50px 0;
+  margin: 0 0 47px 0;
   height: 27px;
   padding: 0;
   border: 0;
@@ -9,9 +9,10 @@
   line-height: 17px;
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 650px) {
   .edit-form__input-description {
     font-size: 14px;
     line-height: 17px;
+    margin: 0 0 48px 0;
   }
 }

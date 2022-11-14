@@ -11,7 +11,7 @@
   vertical-align: text-top;
 }
 
-@media screen and (max-width: 845px) {
+@media screen and (max-width: 650px) {
   .edit-form__input-name {
     font-size: 14px;
     line-height: 17px;

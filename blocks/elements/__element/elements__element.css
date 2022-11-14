@@ -1,6 +1,7 @@
 .elements__element {
   width: 282px;
-  height: 361px;
+  /* В макете высота 361px и 362px. Ставлю 362px */
+  height: 362px;
   border-radius: 10px;
   background-color: #fff;
   overflow: hidden;

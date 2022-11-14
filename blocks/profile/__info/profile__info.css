@@ -9,15 +9,9 @@
   align-self: center;
 }
 
-@media screen and (max-width: 984px) {
+@media screen and (max-width: 968px) {
   .profile__info  {
-    padding: 0 20px;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .profile__info  {
-    padding: 0 10px;
+    padding: 0 0 0 42px;
   }
 }
 
