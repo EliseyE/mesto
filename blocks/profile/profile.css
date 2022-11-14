@@ -8,6 +8,6 @@
   .profile {
     grid-template-columns: 1fr;
     justify-items: center;
-    grid-template-rows: min-content 26px min-content 31px min-content;;
+    grid-template-rows: min-content 26px min-content 31px min-content;
   }
 }
