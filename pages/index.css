@@ -5,7 +5,6 @@
 /* page */
 @import url('../blocks/page/page.css');
 @import url('../blocks/page/__content/page__content.css');
-@import url('../blocks/page/__header-area/page__header-area.css');
 @import url('../blocks/page/__header/page__header.css');
 @import url('../blocks/page/__side-space/page__side-space.css');
 
@@ -49,3 +48,13 @@
 @import url('../blocks/edit-form/__input-description/edit-form__input-description.css');
 @import url('../blocks/edit-form/__submit-button/edit-form__submit-button.css');
 @import url('../blocks/edit-form/_is-opened/edit-form_is-opened.css');
+
+/* TEMP styles*/
+
+/* * {
+  outline: 1px solid rgba(218, 112, 214, 0.733);
+}
+
+.page {
+  outline: 3px dashed rgba(240, 227, 227, 0.815);
+} */

@@ -6,14 +6,9 @@
   box-sizing: border-box;
 }
 
-@media screen and (max-width: 1080px) {
-  .header__logo {
-    margin: 0 0 31.6px 27px;
-  }
-}
-
 @media screen and (max-width: 540px) {
   .header__logo {
+    margin: 0 0 31.6px 27px;
     width: 103.74px;
     height: 24.4px;
   }
