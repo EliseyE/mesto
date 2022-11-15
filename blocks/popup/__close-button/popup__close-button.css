@@ -1,4 +1,4 @@
-.edit-form__close-button {
+.popup__close-button {
   padding: 0;
   width: 32px;
   height: 32px;
@@ -7,22 +7,23 @@
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
-  top: calc(50vh - (165px + 32px + 8px));
-  right: calc(50vw - (215px + 32px + 8px));
+  top: calc(-32px - 8px);
+  right: calc(-32px - 8px);
   border: 0;
   background-color: rgba(0, 0, 0, 0);
   transition: opacity .35s;
+  cursor: pointer;
 }
 
-.edit-form__close-button:hover {
+.popup__close-button:hover {
   opacity: .6;
 }
 
 @media screen and (max-width: 650px) {
-  .edit-form__close-button {
+  .popup__close-button {
     width: 20px;
     height: 20px;
-    top: calc(50vh - (141px + 24px + 32px));
-    right: calc(50vw - 161px + 20px);
+    top: calc(-20px - 16px);
+    right: 0;
   }
 }

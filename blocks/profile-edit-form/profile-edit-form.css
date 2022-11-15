@@ -1,7 +1,6 @@
-.edit-form__form {
+.profile-edit-form {
   width: 430px;
-  height: 330px;
-  padding: 34px 36px 37px;
+  padding: 34px 36px 35px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -13,9 +12,8 @@
 }
 
 @media screen and (max-width: 650px) {
-  .edit-form__form {
+  .profile-edit-form {
     width: 282px;
-    height: 322px;
     padding: 26px 22px;
   }
 }

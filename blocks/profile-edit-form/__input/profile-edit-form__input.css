@@ -1,5 +1,5 @@
-.edit-form__input-description {
-  margin: 0 0 47px 0;
+.profile-edit-form__input {
+  color: #000;
   height: 27px;
   padding: 0;
   border: 0;
@@ -7,12 +7,12 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
+  vertical-align: text-top;
 }
 
 @media screen and (max-width: 650px) {
-  .edit-form__input-description {
+  .profile-edit-form__input  {
     font-size: 14px;
     line-height: 17px;
-    margin: 0 0 48px 0;
   }
 }

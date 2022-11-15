@@ -1,0 +1,14 @@
+.profile-edit-form__input-container {
+  padding: 0;
+  margin: 0 0 50px 0;
+  border: 0 none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 29px;
+}
+
+@media screen and (max-width: 650px) {
+  .profile-edit-form__input-container {
+    margin: 0 0 45px 0;
+  }
+}

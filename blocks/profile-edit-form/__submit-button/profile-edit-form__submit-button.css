@@ -1,4 +1,4 @@
-.edit-form__submit-button {
+.profile-edit-form__submit-button {
   padding: 0;
   height: 50px;
   font-weight: 400;
@@ -10,14 +10,15 @@
   border: 0;
   border-radius: 2px;
   transition: .35s;
+  cursor: pointer;
 }
 
-.edit-form__submit-button:hover {
+.profile-edit-form__submit-button:hover {
   background-color: rgba(0, 0, 0, .8);
 }
 
 @media screen and (max-width: 650px) {
-  .edit-form__submit-button {
+  .profile-edit-form__submit-button {
     height: 46px;
     font-size: 14px;
     line-height: 17px;
