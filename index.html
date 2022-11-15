@@ -122,10 +122,24 @@
     <form class="edit-form__form">
       <button class="edit-form__close-button"></button>
       <h2 class="edit-form__title">Редактировать профиль</h2>
-      <input class="edit-form__input-name" placeholder="Ваше имя" type="text">
-      <input class="edit-form__input-description" placeholder="О себе" type="text">
+      <input class="edit-form__input-name" placeholder="Ваше имя" type="text" required>
+      <input class="edit-form__input-description" placeholder="О себе" type="text" required>
       <input class="edit-form__submit-button" type="submit" value="Сохранить">
     </form>
+  </section>
+
+  <section class="popup">
+    <div class="popup__container">
+        <button class="popup__close-button"></button>
+        <form class="profile-edit-form" name="profile-edit-form">
+          <h2 class="profile-edit-form__title">Редактировать профиль</h2>
+          <fieldset class="profile-edit-form__input-container profile-edit-form__input-container_data_main">
+            <input class="profile-edit-form__input profile-edit-form__input_kind_name" placeholder="Введите ваше имя" type="text" required name="name">
+            <input class="profile-edit-form__input profile-edit-form__input_kind_description" placeholder="Введите информацию о себе" type="text" required name="description">
+          </fieldset>
+          <input class="profile-data-edit-form__submit-button" type="submit" value="Сохранить">
+        </form>
+    </div>
   </section>
   <script src="./scripts/index.js"></script>
 </body>
