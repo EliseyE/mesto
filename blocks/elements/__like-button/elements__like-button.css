@@ -7,9 +7,9 @@
   background-position: center;
   background-repeat: no-repeat;
   transition: opacity .35s;
-
+  cursor: pointer;
 }
 
 .elements__like-button:hover {
-  opacity: .6;
+  opacity: .5;
 }

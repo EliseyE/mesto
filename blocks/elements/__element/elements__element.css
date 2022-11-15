@@ -1,11 +1,8 @@
 .elements__element {
-  width: 282px;
-  /* В макете высота 361px и 362px. Ставлю 362px */
-  height: 362px;
   border-radius: 10px;
   background-color: #fff;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
 }
