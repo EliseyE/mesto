@@ -1,34 +1,36 @@
+// page
+const pageElement = document.querySelector('.page');
+
 // profile variables
-const profileElement = document.querySelector('.profile');
+const profileElement = pageElement.querySelector('.profile');
 const editFormOpenButtonElement = profileElement.querySelector('.profile__edit-button');
 let personName = profileElement.querySelector('.profile__name');
 let personDescription = profileElement.querySelector('.profile__description');
 
-// edit form variables
-const editFormElement = document.querySelector('.edit-form');
-const editFormCloseButtonElement = editFormElement.querySelector('.edit-form__close-button');
-const editFormSubmitButtonElement = editFormElement.querySelector('.edit-form__submit-button');
-let editFormInputFieldName = editFormElement.querySelector('.edit-form__input-name');
-let editFormInputFieldDescription = editFormElement.querySelector('.edit-form__input-description');
+// popup close button
+const popupElement = pageElement.querySelector('.popup');
+const popupCloseButtonElement = popupElement.querySelector('.popup__close-button');
 
+// edit form variables
+const editFormElement = popupElement.querySelector('.profile-edit-form');
+const editFormSubmitButtonElement = editFormElement.querySelector('.profile-edit-form__submit-button');
+let editFormInputFieldName = editFormElement.querySelector('.profile-edit-form__input_kind_name');
+let editFormInputFieldDescription = editFormElement.querySelector('.profile-edit-form__input_kind_description');
+
+//
 // functions
 
 // open edit form
 const openEditForm = function () {
   editFormInputFieldName.value = personName.textContent;
   editFormInputFieldDescription.value = personDescription.textContent;
-  editFormElement.classList.add('edit-form_is-opened');
+  popupElement.classList.add('popup_is-opened');
 }
-
-editFormOpenButtonElement.addEventListener('click', openEditForm);
-
 
 // close edit form
 const closeEditForm = function () {
-  editFormElement.classList.remove('edit-form_is-opened');
+  popupElement.classList.remove('popup_is-opened');
 }
-
-editFormCloseButtonElement.addEventListener('click', closeEditForm);
 
 // submit and close edit form
 function editFormSubmitHandler (evt) {
@@ -41,16 +43,7 @@ function editFormSubmitHandler (evt) {
     }
 }
 
+// listeners
+editFormOpenButtonElement.addEventListener('click', openEditForm);
+popupCloseButtonElement.addEventListener('click', closeEditForm);
 editFormElement.addEventListener('submit', editFormSubmitHandler);
-
-//get like
-const elementsElement = document.querySelector('.elements');
-const elementLikeButton = elementsElement.querySelectorAll('.elements__like-button');
-
-const likeElement = function (evt) {
-    evt.target.classList.toggle('elements__like-button_active');
-}
-
-elementLikeButton.forEach(function(el) {
-  el.addEventListener('click', likeElement);
-});
