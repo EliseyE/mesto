@@ -30,7 +30,9 @@ const editFormCreateElementInputLink = editFormCreateElementElement.querySelecto
 
 // elements variables
 const elementsElement = pageElement.querySelector('.elements');
-const elementsListElement = pageElement.querySelector('.elements__list');
+const elementsListElement = elementsElement.querySelector('.elements__list');
+// const elementElement = elementsElement.querySelector('.elements__element');
+// const elementLikeButton = elementElement.querySelector('.elements__like-button');
 
 const initialElements = [
   {
@@ -96,9 +98,12 @@ const addElement = function(nameValue, linkValue) {
   const elementElement = elementTemplate.querySelector('.elements__element').cloneNode(true);
   const imgElement = elementElement.querySelector('img');
 
+  // data
   elementElement.querySelector('.elements__description').textContent = nameValue;
   imgElement.alt = nameValue;
   imgElement.src = linkValue;
+
+  elementElement.querySelector('.elements__like-button').addEventListener('click', function (evt) { evt.target.classList.toggle('elements__like-button_active');});
 
   elementsListElement.prepend(elementElement);
 }
@@ -110,6 +115,8 @@ const addInitialElements = function(initialElements) {
 }
 
 addInitialElements(initialElements);
+
+
 
 //edit form create element
 // submit and close edit form profile
@@ -127,7 +134,6 @@ function createNewElement (evt) {
 }
 
 
-
 // listeners
 // profile
 editFormProfileOpenButtonElement.addEventListener('click', openEditFormProfile);
@@ -138,4 +144,5 @@ editFormProfileElement.addEventListener('submit', editFormProfileSubmitHandler);
 editFormElementsOpenButtonElement.addEventListener('click', function() { openPopupElement(popupCreateElementElement) } );
 popupCreateElementCloseButtonElement.addEventListener('click', function() { closePopupElement(popupCreateElementElement) } );
 editFormCreateElementElement.addEventListener('submit', createNewElement);
+
 
