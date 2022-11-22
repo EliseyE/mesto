@@ -8,25 +8,27 @@ const editFormElementsOpenButtonElement = profileElement.querySelector('.profile
 let personName = profileElement.querySelector('.profile__name');
 let personDescription = profileElement.querySelector('.profile__description');
 
-//profile popup
+// profile popup
 // popup profile close button
 const popupProfileEditElement = pageElement.querySelector('.popup_type_profile');
 const popupProfileEditCloseButtonElement = popupProfileEditElement.querySelector('.popup__close-button_type_profile');
 
 // edit form profile variables
 const editFormProfileElement = popupProfileEditElement.querySelector('.edit-form_type_profile');
-const editFormSubmitButtonElement = editFormProfileElement.querySelector('.profile-edit-form__submit-button_type_profile');
-let editFormProfileInputFieldName = editFormProfileElement.querySelector('.edit-form__input_kind_profile-name');
-let editFormProfileInputFieldDescription = editFormProfileElement.querySelector('.edit-form__input_kind_profile-description');
+const editFormProfileInputFieldName = editFormProfileElement.querySelector('.edit-form__input_kind_profile-name');
+const editFormProfileInputFieldDescription = editFormProfileElement.querySelector('.edit-form__input_kind_profile-description');
 
-//element popup
+// element popup
 // popup profile close button
 const popupCreateElementElement = pageElement.querySelector('.popup_type_create-element');
 const popupCreateElementCloseButtonElement = popupCreateElementElement.querySelector('.popup__close-button_type_create-element');
 
+// edit form create element varables
+const editFormCreateElementElement = pageElement.querySelector('.edit-form_type_create-element');
+const editFormCreateElementInputName = editFormCreateElementElement.querySelector('.edit-form__input_kind_create-element-name');
+const editFormCreateElementInputLink = editFormCreateElementElement.querySelector('.edit-form__input_kind_create-element-link');
 
-
-//elements variables
+// elements variables
 const elementsElement = pageElement.querySelector('.elements');
 const elementsListElement = pageElement.querySelector('.elements__list');
 
@@ -84,7 +86,6 @@ function editFormProfileSubmitHandler (evt) {
     if ((editFormProfileInputFieldName.value !== '') && (editFormProfileInputFieldDescription.value !== '')) {
       personName.textContent = editFormProfileInputFieldName.value;
       personDescription.textContent = editFormProfileInputFieldDescription.value;
-      // closeEditFormProfile();
       closePopupElement(popupProfileEditElement);
     }
 }
@@ -99,11 +100,11 @@ const addElement = function(nameValue, linkValue) {
   imgElement.alt = nameValue;
   imgElement.src = linkValue;
 
-  elementsListElement.append(elementElement);
+  elementsListElement.prepend(elementElement);
 }
 
 const addInitialElements = function(initialElements) {
-  initialElements.forEach(element => {
+  initialElements.slice().reverse().forEach(element => {
     addElement(element.name, element.link);
   });
 }
@@ -111,8 +112,19 @@ const addInitialElements = function(initialElements) {
 addInitialElements(initialElements);
 
 //edit form create element
-//
+// submit and close edit form profile
+function createNewElement (evt) {
+  evt.preventDefault();
 
+  if ((editFormCreateElementInputName.value !== '') && (editFormCreateElementInputLink.value !== '')) {
+
+    addElement(editFormCreateElementInputName.value, editFormCreateElementInputLink.value);
+
+    closePopupElement(popupCreateElementElement);
+    editFormCreateElementInputName.value = '';
+    editFormCreateElementInputLink.value = '';
+  }
+}
 
 
 
@@ -125,4 +137,5 @@ editFormProfileElement.addEventListener('submit', editFormProfileSubmitHandler);
 // element
 editFormElementsOpenButtonElement.addEventListener('click', function() { openPopupElement(popupCreateElementElement) } );
 popupCreateElementCloseButtonElement.addEventListener('click', function() { closePopupElement(popupCreateElementElement) } );
+editFormCreateElementElement.addEventListener('submit', createNewElement);
 
