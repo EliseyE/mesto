@@ -41,16 +41,30 @@
     <h2 class="footer__copyright">© 2022 Mesto Russia</h2>
   </footer>
 
-  <section class="popup">
+  <section class="popup popup_type_profile">
     <div class="popup__container">
-        <button class="popup__close-button" type="button"></button>
-        <form class="profile-edit-form" name="profile-edit-form">
-          <h2 class="profile-edit-form__title">Редактировать профиль</h2>
-          <fieldset class="profile-edit-form__input-container">
-            <input class="profile-edit-form__input profile-edit-form__input_kind_name" placeholder="Введите ваше имя" type="text" required name="name">
-            <input class="profile-edit-form__input profile-edit-form__input_kind_description" placeholder="Введите данные о себе" type="text" required name="description">
+        <button class="popup__close-button popup__close-button_type_profile" type="button"></button>
+        <form class="edit-form edit-form_type_profile" name="edit-form_type_profile">
+          <h2 class="edit-form__title">Редактировать профиль</h2>
+          <fieldset class="edit-form__input-container">
+            <input class="edit-form__input edit-form__input_kind_profile-name" placeholder="Введите ваше имя" type="text" required name="profile-name">
+            <input class="edit-form__input edit-form__input_kind_profile-description" placeholder="Введите данные о себе" type="text" required name="profile-description">
           </fieldset>
-          <input class="profile-edit-form__submit-button" type="submit" value="Сохранить">
+          <input class="edit-form__submit-button edit-form__submit-button_type_profile" type="submit" value="Сохранить">
+        </form>
+    </div>
+  </section>
+
+  <section class="popup popup_type_create-element">
+    <div class="popup__container">
+        <button class="popup__close-button popup__close-button_type_create-element" type="button"></button>
+        <form class="edit-form edit-form_type_create-element" name="edit-form_type_create-element">
+          <h2 class="edit-form__title">Новое место</h2>
+          <fieldset class="edit-form__input-container">
+            <input class="edit-form__input edit-form__input_kind_create-element-name" placeholder="Название" type="text" required name="create-element-name">
+            <input class="edit-form__input edit-form__input_kind_create-element-link" placeholder="Ссылка на картинку" type="text" required name="create-element-link">
+          </fieldset>
+          <input class="edit-form__submit-button edit-form__submit-button_type_create-element" type="submit" value="Создать">
         </form>
     </div>
   </section>

@@ -1,4 +1,4 @@
-.profile-edit-form__title {
+.edit-form__title {
   margin: 0 0 48px 0;
   padding: 0;
   font-weight: 900;
@@ -6,7 +6,7 @@
 }
 
 @media screen and (max-width: 650px) {
-  .profile-edit-form__title {
+  .edit-form__title {
     font-size: 18px;
     line-height: 22px;
     margin: 0 0 72px 0;

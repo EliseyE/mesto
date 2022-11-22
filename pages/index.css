@@ -45,9 +45,9 @@
 @import url('../blocks/popup/__close-button/popup__close-button.css');
 @import url('../blocks/popup/_is-opened/popup_is-opened.css');
 
-/* profile edit form */
-@import url('../blocks/profile-edit-form/profile-edit-form.css');
-@import url('../blocks/profile-edit-form/__title/profile-edit-form__title.css');
-@import url('../blocks/profile-edit-form/__input-container/profile-edit-form__input-container.css');
-@import url('../blocks/profile-edit-form/__input/profile-edit-form__input.css');
-@import url('../blocks/profile-edit-form/__submit-button/profile-edit-form__submit-button.css');
+/* edit form */
+@import url('../blocks/edit-form/edit-form.css');
+@import url('../blocks/edit-form/__title/edit-form__title.css');
+@import url('../blocks/edit-form/__input-container/edit-form__input-container.css');
+@import url('../blocks/edit-form/__input/edit-form__input.css');
+@import url('../blocks/edit-form/__submit-button/edit-form__submit-button.css');

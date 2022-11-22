@@ -1,4 +1,4 @@
-.profile-edit-form {
+.edit-form {
   width: 430px;
   padding: 34px 36px 35px;
   box-sizing: border-box;
@@ -12,7 +12,7 @@
 }
 
 @media screen and (max-width: 650px) {
-  .profile-edit-form {
+  .edit-form {
     width: 282px;
     padding: 26px 22px;
   }

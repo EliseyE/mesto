@@ -1,4 +1,4 @@
-.profile-edit-form__input {
+.edit-form__input {
   color: #000;
   height: 27px;
   padding: 0;
@@ -11,7 +11,7 @@
 }
 
 @media screen and (max-width: 650px) {
-  .profile-edit-form__input  {
+  .edit-form__input  {
     font-size: 14px;
     line-height: 17px;
   }
