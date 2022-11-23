@@ -83,6 +83,14 @@ const cleanAllInputValues = function (element) {
   });
 }
 
+const isValidLink = function (url) {
+  if (url.startsWith("https://") || url.startsWith("http://")) {
+    return true;
+  };
+    alert("Ссылка нерабочая - введите адрес, начинающийся с https:// или http://");
+    return false;
+}
+
 //popup
 const openPopupElement = function (item) {
   item.classList.add('popup_is-opened');
@@ -166,7 +174,7 @@ addInitialElements(initialElements);
 const createNewElement = function (evt) {
   evt.preventDefault();
 
-  if ((editFormCreateElementInputName.value !== '') && (editFormCreateElementInputLink.value !== '')) {
+  if (isValidLink(editFormCreateElementInputLink.value)) {
     addElement(editFormCreateElementInputName.value, editFormCreateElementInputLink.value);
     closePopupElement(popupCreateElementElement);
     cleanAllInputValues(editFormCreateElementInputFieldsetElement);
@@ -191,7 +199,5 @@ popupCreateElementCloseButtonElement.addEventListener('click', closePopupCreateE
 editFormCreateElementElement.addEventListener('submit', createNewElement);
 
 // popup-image
-// решение: не чистить данные в popup-image, так как лишняя вычеслительная нагрузка.
-// При выборе другой картинки данные будут переписаны.
 popupImageElementCloseButton.addEventListener('click', function () { closePopupElement(popupImageElement) });
 
