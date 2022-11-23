@@ -72,10 +72,12 @@ const initialElements = [
 // functions
 
 // common
+// remove an element
 const removeElement = function (element) {
   element.remove();
 }
 
+// clean all inputs
 const cleanAllInputValues = function (element) {
   let item = element.querySelectorAll('input');
   item.forEach(item => {
@@ -83,6 +85,7 @@ const cleanAllInputValues = function (element) {
   });
 }
 
+//  validation of link
 const isValidLink = function (url) {
   if (url.startsWith("https://") || url.startsWith("http://")) {
     return true;
@@ -92,10 +95,12 @@ const isValidLink = function (url) {
 }
 
 //popup
+// open popup
 const openPopupElement = function (item) {
   item.classList.add('popup_is-opened');
 }
 
+// close popup
 const closePopupElement = function (item) {
   item.classList.remove('popup_is-opened');
 }
@@ -138,12 +143,12 @@ const closePopupImageElement = function (popupImageElement) {
   closePopupElement(popupImageElement);
   setTimeout (function() {
     popupImageUnit.src = "#";
-    popupImageUnit.alt = "Картинка";
+    popupImageUnit.alt = "Здесь будет картинка";
     popupImageCaption.textContent = "";
   }, 100);
 }
 
-// add
+// add an element
 const addElement = function (nameValue, linkValue) {
   const elementTemplate = pageElement.querySelector('#element').content;
   const elementElement = elementTemplate.querySelector('.elements__element').cloneNode(true);
@@ -160,6 +165,7 @@ const addElement = function (nameValue, linkValue) {
   elementsListElement.prepend(elementElement);
 }
 
+// add initial elements
 const addInitialElements = function (initialElements) {
   initialElements.slice().reverse().forEach(element => {
     addElement(element.name, element.link);
