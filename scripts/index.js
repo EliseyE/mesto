@@ -1,5 +1,6 @@
 // page
 const pageElement = document.querySelector('.page');
+const pageElement1 = document.querySelectorAll
 
 // profile variables
 const profileElement = pageElement.querySelector('.profile');
@@ -25,6 +26,7 @@ const popupCreateElementCloseButtonElement = popupCreateElementElement.querySele
 
 // edit form create element varables
 const editFormCreateElementElement = pageElement.querySelector('.edit-form_type_create-element');
+const editFormCreateElementInputFieldsetElement = editFormCreateElementElement.querySelector('.edit-form__input-container');
 const editFormCreateElementInputName = editFormCreateElementElement.querySelector('.edit-form__input_kind_create-element-name');
 const editFormCreateElementInputLink = editFormCreateElementElement.querySelector('.edit-form__input_kind_create-element-link');
 
@@ -74,6 +76,13 @@ const removeElement = function (element) {
   element.remove();
 }
 
+const cleanAllInputValues = function (element) {
+  let item = element.querySelectorAll('input');
+  item.forEach(item => {
+    item.value = '';
+  });
+}
+
 //popup
 const openPopupElement = function (item) {
   item.classList.add('popup_is-opened');
@@ -92,7 +101,7 @@ const openEditFormProfile = function () {
 }
 
 // submit and close edit form profile
-function editFormProfileSubmitHandler (evt) {
+const editFormProfileSubmitHandler = function (evt) {
     evt.preventDefault();
 
     if ((editFormProfileInputFieldName.value !== '') && (editFormProfileInputFieldDescription.value !== '')) {
@@ -127,7 +136,7 @@ const closePopupImageElement = function (popupImageElement) {
 }
 
 // add
-const addElement = function(nameValue, linkValue) {
+const addElement = function (nameValue, linkValue) {
   const elementTemplate = pageElement.querySelector('#element').content;
   const elementElement = elementTemplate.querySelector('.elements__element').cloneNode(true);
   const imgElement = elementElement.querySelector('img');
@@ -143,7 +152,7 @@ const addElement = function(nameValue, linkValue) {
   elementsListElement.prepend(elementElement);
 }
 
-const addInitialElements = function(initialElements) {
+const addInitialElements = function (initialElements) {
   initialElements.slice().reverse().forEach(element => {
     addElement(element.name, element.link);
   });
@@ -154,18 +163,20 @@ addInitialElements(initialElements);
 
 //edit form create element
 // submit and close edit form profile
-
-function createNewElement (evt) {
+const createNewElement = function (evt) {
   evt.preventDefault();
 
   if ((editFormCreateElementInputName.value !== '') && (editFormCreateElementInputLink.value !== '')) {
-
     addElement(editFormCreateElementInputName.value, editFormCreateElementInputLink.value);
-
     closePopupElement(popupCreateElementElement);
-    editFormCreateElementInputName.value = '';
-    editFormCreateElementInputLink.value = '';
+    cleanAllInputValues(editFormCreateElementInputFieldsetElement);
   }
+}
+
+// close create element form
+const closePopupCreateElementEditForm = function () {
+  closePopupElement(popupCreateElementElement);
+  cleanAllInputValues(editFormCreateElementInputFieldsetElement);
 }
 
 // listeners
@@ -176,7 +187,7 @@ editFormProfileElement.addEventListener('submit', editFormProfileSubmitHandler);
 
 // element
 editFormElementsOpenButtonElement.addEventListener('click', function() { openPopupElement(popupCreateElementElement) } );
-popupCreateElementCloseButtonElement.addEventListener('click', function() { closePopupElement(popupCreateElementElement) } );
+popupCreateElementCloseButtonElement.addEventListener('click', closePopupCreateElementEditForm);
 editFormCreateElementElement.addEventListener('submit', createNewElement);
 
 // popup-image
