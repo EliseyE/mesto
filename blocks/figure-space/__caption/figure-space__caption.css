@@ -9,4 +9,7 @@
   position: absolute;
   bottom: -25px;
   left: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
