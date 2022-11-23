@@ -31,8 +31,6 @@ const editFormCreateElementInputLink = editFormCreateElementElement.querySelecto
 // elements variables
 const elementsElement = pageElement.querySelector('.elements');
 const elementsListElement = elementsElement.querySelector('.elements__list');
-// const elementElement = elementsElement.querySelector('.elements__element');
-// const elementLikeButton = elementElement.querySelector('.elements__like-button');
 
 const initialElements = [
   {
@@ -63,6 +61,20 @@ const initialElements = [
 
 //
 // functions
+
+// common
+const removeElement = function (element) {
+  element.remove();
+}
+
+function TestURL(url) {
+  var request = new XMLHttpRequest();
+
+  request.open('HEAD', url, false);
+  request.send();
+
+  return request.status != 404;
+}
 
 //popup
 const openPopupElement = function (item) {
@@ -98,12 +110,13 @@ const addElement = function(nameValue, linkValue) {
   const elementElement = elementTemplate.querySelector('.elements__element').cloneNode(true);
   const imgElement = elementElement.querySelector('img');
 
-  // data
+  // elements data
   elementElement.querySelector('.elements__description').textContent = nameValue;
   imgElement.alt = nameValue;
   imgElement.src = linkValue;
 
   elementElement.querySelector('.elements__like-button').addEventListener('click', function (evt) { evt.target.classList.toggle('elements__like-button_active');});
+  elementElement.querySelector('.elements__trash-button').addEventListener('click', function () { removeElement(elementElement) });
 
   elementsListElement.prepend(elementElement);
 }
@@ -120,6 +133,7 @@ addInitialElements(initialElements);
 
 //edit form create element
 // submit and close edit form profile
+
 function createNewElement (evt) {
   evt.preventDefault();
 
