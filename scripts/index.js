@@ -116,12 +116,9 @@ const openEditFormProfile = function () {
 // submit and close edit form profile
 const editFormProfileSubmitHandler = function (evt) {
     evt.preventDefault();
-
-    if ((editFormProfileInputFieldName.value !== '') && (editFormProfileInputFieldDescription.value !== '')) {
       personName.textContent = editFormProfileInputFieldName.value;
       personDescription.textContent = editFormProfileInputFieldDescription.value;
       closePopupElement(popupProfileEditElement);
-    }
 }
 
 //elements's functions
