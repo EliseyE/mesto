@@ -1,5 +1,6 @@
 // page
 const page = document.querySelector('.page');
+const closeButtons = page.querySelectorAll('.popup__close-button');
 
 // profile variables
 const profile = page.querySelector('.profile');
@@ -81,6 +82,7 @@ const isValidLink = function (url) {
     alert("Ссылка нерабочая - введите адрес, начинающийся с https:// или http://");
     return false;
 }
+
 
 //popup
 // open popup
@@ -178,15 +180,18 @@ const addPhotoCardsFromArrayOfObjects = function (array) {
 addPhotoCardsFromArrayOfObjects(initialCards);
 
 // listeners
+// popup
+closeButtons.forEach(button => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
+});
+
 // profile
 profileEditButton.addEventListener('click', openProfileEditForm);
-popupEditProfileCloseButton.addEventListener('click', function() { closePopup(popupEditProfile) });
 profileEditForm.addEventListener('submit', handleProfileDataSubmit);
 
 // photoCard
 profileAddPhotoCardButton.addEventListener('click', function() { openPopup(popupCreatePhotoCard) });
-popupCreatePhotoCardCloseButton.addEventListener('click', function() { closePopup(popupCreatePhotoCard) });
 photoCardCreateForm.addEventListener('submit', createNewPhotoCard);
 
-// popup-image
-popupImageCloseButton.addEventListener('click', function () { closePopup(popupImage) });
+
