@@ -31,8 +31,8 @@
         <button class="profile__add-button" type="button"></button>
       </section>
 
-      <section class="elements" aria-label="Фотогалерея">
-        <ul class="elements__list">
+      <section class="collection" aria-label="Фотогалерея">
+        <ul class="collection__list">
           <!-- Новые фотографии JS добавлять в начале списка -->
         </ul>
       </section>
@@ -83,17 +83,17 @@
     </div>
   </section>
 
-  <template id="element">
-    <li class="elements__element">
+  <template id="photoCard">
+    <li class="photoCard">
       <img src="#"
       alt=""
-      class="elements__image"
+      class="photoCard__image"
       >
-      <div class="elements__info">
-        <h2 class="elements__description"></h2>
-        <button class="elements__like-button" type="button"></button>
+      <div class="photoCard__info">
+        <h2 class="photoCard__description"></h2>
+        <button class="photoCard__like-button" type="button"></button>
       </div>
-      <button class="elements__trash-button" type="button"></button>
+      <button class="photoCard__trash-button" type="button"></button>
     </li>
   </template>
 

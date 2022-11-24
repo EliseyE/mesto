@@ -24,16 +24,19 @@
 @import url('../blocks/profile/__description/profile__description.css');
 @import url('../blocks/profile/__edit-button/profile__edit-button.css');
 
-/* elements */
-@import url('../blocks/elements/elements.css');
-@import url('../blocks/elements/__element/elements__element.css');
-@import url('../blocks/elements/__image/elements__image.css');
-@import url('../blocks/elements/__info/elements__info.css');
-@import url('../blocks/elements/__description/elements__description.css');
-@import url('../blocks/elements/__like-button/elements__like-button.css');
-@import url('../blocks/elements/__like-button/_active/elements__like-button_active.css');
-@import url('../blocks/elements/__list/elements__list.css');
-@import url('../blocks/elements/__trash-button/elements__trash-button.css');
+/* collection */
+@import url('../blocks/collection/collection.css');
+@import url('../blocks/collection/__list/collection__list.css');
+
+/* photoCard */
+@import url('../blocks/photoCard/photoCard.css');
+@import url('../blocks/photoCard/__image/photoCard__image.css');
+@import url('../blocks/photoCard/__info/photoCard__info.css');
+@import url('../blocks/photoCard/__description/photoCard__description.css');
+@import url('../blocks/photoCard/__like-button/photoCard__like-button.css');
+@import url('../blocks/photoCard/__like-button/_active/photoCard__like-button_active.css');
+@import url('../blocks/photoCard/__trash-button/photoCard__trash-button.css');
+
 
 /* footer */
 @import url('../blocks/footer/footer.css');
