@@ -14,7 +14,7 @@ const popupEditProfile = page.querySelector('.popup_type_profile');
 const popupEditProfileCloseButton = popupEditProfile.querySelector('.popup__close-button_type_profile');
 
 // profile edit form variables
-const profileEditForm = popupEditProfile.querySelector('.edit-form_type_profile');
+const profileEditForm = document.forms["edit-form_type_profile"];
 const profileNameInputField = profileEditForm.querySelector('.edit-form__input_kind_profile-name');
 const profileDescriptionInputField = profileEditForm.querySelector('.edit-form__input_kind_profile-description');
 
@@ -23,7 +23,7 @@ const popupCreatePhotoCard = page.querySelector('.popup_type_create-photoCard');
 const popupCreatePhotoCardCloseButton = popupCreatePhotoCard.querySelector('.popup__close-button_type_create-photoCard');
 
 // photoCard create form varables
-const photoCardCreateForm = page.querySelector('.edit-form_type_create-photoCard');
+const photoCardCreateForm = document.forms["edit-form_type_create-photoCard"];
 const photoCardDataInputsFieldset = photoCardCreateForm.querySelector('.edit-form__input-container');
 const photoCardNameInputField = photoCardCreateForm.querySelector('.edit-form__input_kind_create-photoCard-name');
 const photoCardLinkInputField = photoCardCreateForm.querySelector('.edit-form__input_kind_create-photoCard-link');
@@ -193,5 +193,3 @@ profileEditForm.addEventListener('submit', handleProfileDataSubmit);
 // photoCard
 profileAddPhotoCardButton.addEventListener('click', function() { openPopup(popupCreatePhotoCard) });
 photoCardCreateForm.addEventListener('submit', createNewPhotoCard);
-
-
