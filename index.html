@@ -32,7 +32,7 @@
       </section>
 
       <section class="collection" aria-label="Фотогалерея">
-        <ul class="collection__list">
+        <ul class="collection__item-list">
           <!-- Новые фотографии JS добавлять в начале списка -->
         </ul>
       </section>
@@ -55,16 +55,16 @@
     </div>
   </section>
 
-  <section class="popup popup_type_create-element">
+  <section class="popup popup_type_create-photoCard">
     <div class="popup__container">
-        <button class="popup__close-button popup__close-button_type_create-element" type="button"></button>
-        <form class="edit-form edit-form_type_create-element" name="edit-form_type_create-element">
+        <button class="popup__close-button popup__close-button_type_create-photoCard" type="button"></button>
+        <form class="edit-form edit-form_type_create-photoCard" name="edit-form_type_create-photoCard">
           <h2 class="edit-form__title">Новое место</h2>
           <fieldset class="edit-form__input-container">
-            <input class="edit-form__input edit-form__input_kind_create-element-name" placeholder="Название" type="text" required name="create-element-name">
-            <input class="edit-form__input edit-form__input_kind_create-element-link" placeholder="Ссылка на картинку" type="text" required name="create-element-link">
+            <input class="edit-form__input edit-form__input_kind_create-photoCard-name" placeholder="Название" type="text" required name="create-photoCard-name">
+            <input class="edit-form__input edit-form__input_kind_create-photoCard-link" placeholder="Ссылка на картинку" type="text" required name="create-photoCard-link">
           </fieldset>
-          <input class="edit-form__submit-button edit-form__submit-button_type_create-element" type="submit" value="Создать">
+          <input class="edit-form__submit-button edit-form__submit-button_type_create-photoCard" type="submit" value="Создать">
         </form>
     </div>
   </section>

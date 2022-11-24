@@ -26,7 +26,7 @@
 
 /* collection */
 @import url('../blocks/collection/collection.css');
-@import url('../blocks/collection/__list/collection__list.css');
+@import url('../blocks/collection/__item-list/collection__item-list.css');
 
 /* photoCard */
 @import url('../blocks/photoCard/photoCard.css');
