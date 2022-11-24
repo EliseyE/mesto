@@ -73,14 +73,6 @@ const removeElement = function (element) {
   element.remove();
 }
 
-// clear all inputs
-const clearAllInputValues = function (element) {
-  const item = element.querySelectorAll('input');
-  item.forEach(item => {
-    item.value = '';
-  });
-}
-
 //  validation of link
 const isValidLink = function (url) {
   if (url.startsWith("https://") || url.startsWith("http://")) {
@@ -102,19 +94,29 @@ const closePopup = function (element) {
 }
 
 // profile edit form
-// open profile edit form
-const openProfileEditForm = function () {
+// upload profile data in the edit form
+const uploadProfileDataIntoEditFormInputFields = function () {
   profileNameInputField.value = profileName.textContent;
   profileDescriptionInputField.value = profileDescription.textContent;
+}
+
+// open profile edit form
+const openProfileEditForm = function () {
+  uploadProfileDataIntoEditFormInputFields();
   openPopup(popupEditProfile);
+}
+
+// write down profile new data on page
+const writeDownProfileNewDataOnThePage = function () {
+  profileName.textContent = profileNameInputField.value;
+  profileDescription.textContent = profileDescriptionInputField.value;
 }
 
 // submit and close edit form profile
 const handleProfileDataSubmit = function (evt) {
-    evt.preventDefault();
-      profileName.textContent = profileNameInputField.value;
-      profileDescription.textContent = profileDescriptionInputField.value;
-      closePopup(popupEditProfile);
+  evt.preventDefault();
+  writeDownProfileNewDataOnThePage();
+  closePopup(popupEditProfile);
 }
 
 // popup image functions
@@ -131,48 +133,27 @@ const openPopupImage = function (element) {
   openPopup(popupImage);
 }
 
-//  close popup-image
-const closePopupImage = function (popupImage) {
-  closePopup(popupImage);
-  setTimeout (function() {
-    popupImagePhoto.src = "#";
-    popupImagePhoto.alt = "Здесь будет картинка";
-    popupImageCaption.textContent = "";
-  }, 100);
-}
-
 // photoCard functions
 // create photoCard
-const createPhotoCard = function () {
-
-}
-
-// add photoCard
-const addPhotoCard = function (nameValue, linkValue) {
+const createPhotoCard = function (nameValue, linkValue) {
   const photoCardTemplate = page.querySelector('#photoCard').content;
-  const photoCard = photoCardTemplate.querySelector('.photoCard').cloneNode(true);
-  const photoCardImage = photoCard.querySelector('.photoCard__image');
+  const newPhotoCard = photoCardTemplate.querySelector('.photoCard').cloneNode(true);
+  const newPhotoCardImage = newPhotoCard.querySelector('.photoCard__image');
 
-  photoCard.querySelector('.photoCard__description').textContent = nameValue;
-  photoCardImage.alt = nameValue;
-  photoCardImage.src = linkValue;
+  newPhotoCard.querySelector('.photoCard__description').textContent = nameValue;
+  newPhotoCardImage.alt = nameValue;
+  newPhotoCardImage.src = linkValue;
 
-  photoCard.querySelector('.photoCard__like-button').addEventListener('click', function (evt) { evt.target.classList.toggle('photoCard__like-button_active');});
-  photoCard.querySelector('.photoCard__trash-button').addEventListener('click', function () { removeElement(photoCard) });
-  photoCardImage.addEventListener('click', function () { openPopupImage(photoCard) })
-
-  collectionItemList.prepend(photoCard);
+  newPhotoCard.querySelector('.photoCard__like-button').addEventListener('click', function (evt) { evt.target.classList.toggle('photoCard__like-button_active');});
+  newPhotoCard.querySelector('.photoCard__trash-button').addEventListener('click', function () { removeElement(newPhotoCard) });
+  newPhotoCardImage.addEventListener('click', function () { openPopupImage(newPhotoCard) });
+  return newPhotoCard;
 }
 
-// add photoCards from array of objects
-const addPhotoCards = function (array) {
-  array.slice().reverse().forEach(object => {
-    addPhotoCard(object.name, object.link);
-  });
+const addPhotoCard = function (nameValue, linkValue) {
+  const newPhotoCard = createPhotoCard(nameValue, linkValue);
+  collectionItemList.prepend(newPhotoCard);
 }
-
-// adding of initial array of photoCards
-addPhotoCards(initialCards);
 
 // photoCard create edit form
 // submit and close photoCard create edit form
@@ -181,10 +162,20 @@ const createNewPhotoCard = function (evt) {
 
   if (isValidLink(photoCardLinkInputField.value)) {
     addPhotoCard(photoCardNameInputField.value, photoCardLinkInputField.value);
-    closePopup(popupCreatePhotoCard);
-    evt.target.reset();
   }
+  closePopup(popupCreatePhotoCard);
+  evt.target.reset();
 }
+
+// add photoCards from array of objects
+const addPhotoCardsFromArrayOfObjects = function (array) {
+  array.slice().reverse().forEach(object => {
+    addPhotoCard(object.name, object.link);
+  });
+}
+
+// adding of initial array of photoCards
+addPhotoCardsFromArrayOfObjects(initialCards);
 
 // listeners
 // profile
@@ -199,4 +190,3 @@ photoCardCreateForm.addEventListener('submit', createNewPhotoCard);
 
 // popup-image
 popupImageCloseButton.addEventListener('click', function () { closePopup(popupImage) });
-
