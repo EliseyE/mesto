@@ -69,11 +69,6 @@ const initialCards = [
 // functions
 
 // common
-// remove an element
-const removeElement = function (element) {
-  element.remove();
-}
-
 //  validation of link
 const isValidLink = function (url) {
   if (url.startsWith("https://") || url.startsWith("http://")) {
@@ -82,7 +77,6 @@ const isValidLink = function (url) {
     alert("Ссылка нерабочая - введите адрес, начинающийся с https:// или http://");
     return false;
 }
-
 
 //popup
 // open popup
@@ -146,8 +140,8 @@ const createPhotoCard = function (nameValue, linkValue) {
   newPhotoCardImage.alt = nameValue;
   newPhotoCardImage.src = linkValue;
 
-  newPhotoCard.querySelector('.photoCard__like-button').addEventListener('click', function (evt) { evt.target.classList.toggle('photoCard__like-button_active');});
-  newPhotoCard.querySelector('.photoCard__trash-button').addEventListener('click', function () { removeElement(newPhotoCard) });
+  newPhotoCard.querySelector('.photoCard__like-button').addEventListener('click', (evt) => { evt.target.classList.toggle('photoCard__like-button_active');});
+  newPhotoCard.querySelector('.photoCard__trash-button').addEventListener('click', (evt) => { evt.target.closest('.photoCard').remove() });
   newPhotoCardImage.addEventListener('click', function () { openPopupImage(newPhotoCard) });
   return newPhotoCard;
 }
@@ -164,9 +158,10 @@ const createNewPhotoCard = function (evt) {
 
   if (isValidLink(photoCardLinkInputField.value)) {
     addPhotoCard(photoCardNameInputField.value, photoCardLinkInputField.value);
+    closePopup(popupCreatePhotoCard);
+    evt.target.reset();
   }
-  closePopup(popupCreatePhotoCard);
-  evt.target.reset();
+
 }
 
 // add photoCards from array of objects
@@ -176,7 +171,7 @@ const addPhotoCardsFromArrayOfObjects = function (array) {
   });
 }
 
-// adding of initial array of photoCards
+// add photoCards from initial array
 addPhotoCardsFromArrayOfObjects(initialCards);
 
 // listeners
@@ -191,5 +186,5 @@ profileEditButton.addEventListener('click', openProfileEditForm);
 profileEditForm.addEventListener('submit', handleProfileDataSubmit);
 
 // photoCard
-profileAddPhotoCardButton.addEventListener('click', function() { openPopup(popupCreatePhotoCard) });
+profileAddPhotoCardButton.addEventListener('click', () => { openPopup(popupCreatePhotoCard) });
 photoCardCreateForm.addEventListener('submit', createNewPhotoCard);
