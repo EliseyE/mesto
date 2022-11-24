@@ -83,7 +83,7 @@ const clearAllInputValues = function (element) {
 
 //  validation of link
 const isValidLink = function (url) {
-  if (url.startsWith("https://") || url.startsdNameWith("http://")) {
+  if (url.startsWith("https://") || url.startsWith("http://")) {
     return true;
   };
     alert("Ссылка нерабочая - введите адрес, начинающийся с https:// или http://");
@@ -159,20 +159,20 @@ const addPhotoCard = function (nameValue, linkValue) {
 
   photoCard.querySelector('.photoCard__like-button').addEventListener('click', function (evt) { evt.target.classList.toggle('photoCard__like-button_active');});
   photoCard.querySelector('.photoCard__trash-button').addEventListener('click', function () { removeElement(photoCard) });
-  photoCard.querySelector('.photoCard__image').addEventListener('click', function () { openPopupImage(photoCard) })
+  photoCardImage.addEventListener('click', function () { openPopupImage(photoCard) })
 
   collectionItemList.prepend(photoCard);
 }
 
-// add initial photoCards
-const addInitialPhotoCards = function (initialCards) {
-  initialCards.slice().reverse().forEach(element => {
-    addPhotoCard(element.name, element.link);
+// add photoCards from array of objects
+const addPhotoCards = function (array) {
+  array.slice().reverse().forEach(object => {
+    addPhotoCard(object.name, object.link);
   });
 }
 
-// initial adding of photoCards
-addInitialPhotoCards(initialCards);
+// adding of initial array of photoCards
+addPhotoCards(initialCards);
 
 // photoCard create edit form
 // submit and close photoCard create edit form
@@ -182,25 +182,19 @@ const createNewPhotoCard = function (evt) {
   if (isValidLink(photoCardLinkInputField.value)) {
     addPhotoCard(photoCardNameInputField.value, photoCardLinkInputField.value);
     closePopup(popupCreatePhotoCard);
-    clearAllInputValues(photoCardDataInputsFieldset);
+    evt.target.reset();
   }
-}
-
-// close create element form
-const closePopupCreatePhotoCard = function () {
-  closePopup(popupCreatePhotoCard);
-  clearAllInputValues(photoCardDataInputsFieldset);
 }
 
 // listeners
 // profile
 profileEditButton.addEventListener('click', openProfileEditForm);
-popupEditProfileCloseButton.addEventListener('click', function() { closePopup(popupEditProfile) } );
+popupEditProfileCloseButton.addEventListener('click', function() { closePopup(popupEditProfile) });
 profileEditForm.addEventListener('submit', handleProfileDataSubmit);
 
-// element
-profileAddPhotoCardButton.addEventListener('click', function() { openPopup(popupCreatePhotoCard) } );
-popupCreatePhotoCardCloseButton.addEventListener('click', closePopupCreatePhotoCard);
+// photoCard
+profileAddPhotoCardButton.addEventListener('click', function() { openPopup(popupCreatePhotoCard) });
+popupCreatePhotoCardCloseButton.addEventListener('click', function() { closePopup(popupCreatePhotoCard) });
 photoCardCreateForm.addEventListener('submit', createNewPhotoCard);
 
 // popup-image
