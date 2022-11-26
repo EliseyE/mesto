@@ -26,7 +26,6 @@ const popupCreatePhotoCardCloseButton = popupCreatePhotoCard.querySelector('.pop
 
 // photoCard create form varables
 const photoCardCreateForm = document.forms["edit-form_type_create-photoCard"];
-const photoCardDataInputsFieldset = photoCardCreateForm.querySelector('.edit-form__input-container');
 const photoCardNameInputField = photoCardCreateForm.querySelector('.edit-form__input_kind_create-photoCard-name');
 const photoCardLinkInputField = photoCardCreateForm.querySelector('.edit-form__input_kind_create-photoCard-link');
 
