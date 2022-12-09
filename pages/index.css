@@ -62,3 +62,13 @@
 @import url('../blocks/figure-space/figure-space.css');
 @import url('../blocks/figure-space/__image/figure-space__image.css');
 @import url('../blocks/figure-space/__caption/figure-space__caption.css');
+
+/* TEMP styles*/
+
+/* * {
+  outline: 1px solid rgba(218, 112, 214, 0.733);
+}
+
+.page {
+  outline: 3px dashed rgba(240, 227, 227, 0.815);
+} */
