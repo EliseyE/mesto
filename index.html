@@ -47,8 +47,22 @@
         <form class="edit-form edit-form_type_profile" name="edit-form_type_profile">
           <h2 class="edit-form__title">Редактировать профиль</h2>
           <fieldset class="edit-form__input-container">
-            <input class="edit-form__input edit-form__input_kind_profile-name" placeholder="Введите ваше имя" type="text" required name="profile-name">
-            <input class="edit-form__input edit-form__input_kind_profile-description" placeholder="Введите данные о себе" type="text" required name="profile-description">
+            <label class="edit-form__input-label">
+              <input class="edit-form__input edit-form__input_kind_profile-name"
+                placeholder="Введите ваше имя"
+                type="text"
+                required
+                name="profile-name">
+              <span id="profile-name-error" class="error"></span>
+            </label>
+            <label class="edit-form__input-label">
+              <input class="edit-form__input edit-form__input_kind_profile-description"
+              placeholder="Введите данные о себе"
+              type="text"
+              required
+              name="profile-description">
+              <span id="profile-description-error" class="error"></span>
+            </label>
           </fieldset>
           <input class="edit-form__submit-button edit-form__submit-button_type_profile" type="submit" value="Сохранить">
         </form>
@@ -61,8 +75,22 @@
         <form class="edit-form edit-form_type_create-photoCard" name="edit-form_type_create-photoCard">
           <h2 class="edit-form__title">Новое место</h2>
           <fieldset class="edit-form__input-container">
-            <input class="edit-form__input edit-form__input_kind_create-photoCard-name" placeholder="Название" type="text" required name="create-photoCard-name">
-            <input class="edit-form__input edit-form__input_kind_create-photoCard-link" placeholder="Ссылка на картинку" type="text" required name="create-photoCard-link">
+            <label class="edit-form__input-label">
+              <input class="edit-form__input edit-form__input_kind_create-photoCard-name"
+              placeholder="Название"
+              type="text"
+              required
+              name="create-photoCard-name">
+              <span id="create-photoCard-name-error" class="error"></span>
+            </label>
+            <label class="edit-form__input-label">
+              <input class="edit-form__input edit-form__input_kind_create-photoCard-link"
+              placeholder="Ссылка на картинку"
+              type="text"
+              required
+              name="create-photoCard-link">
+              <span id="create-photoCard-link-error" class="error"></span>
+            </label>
           </fieldset>
           <input class="edit-form__submit-button edit-form__submit-button_type_create-photoCard" type="submit" value="Создать">
         </form>
