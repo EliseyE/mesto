@@ -56,19 +56,10 @@
 @import url('../blocks/edit-form/__input/edit-form__input.css');
 @import url('../blocks/edit-form/__input/_type/edit-form__input_type_invalid.css');
 @import url('../blocks/edit-form/__submit-button/edit-form__submit-button.css');
+@import url('../blocks/edit-form/__submit-button/_state/edit-form__submit-button_state_disabled.css');
 @import url('../blocks/error/error.css');
 
 /* figure-space */
 @import url('../blocks/figure-space/figure-space.css');
 @import url('../blocks/figure-space/__image/figure-space__image.css');
 @import url('../blocks/figure-space/__caption/figure-space__caption.css');
-
-/* TEMP styles*/
-
-/* * {
-  outline: 1px solid rgba(218, 112, 214, 0.733);
-}
-
-.page {
-  outline: 3px dashed rgba(240, 227, 227, 0.815);
-} */

@@ -51,20 +51,27 @@
               <input class="edit-form__input edit-form__input_kind_profile-name"
                 placeholder="Введите ваше имя"
                 type="text"
+                name="profile-name"
                 required
-                name="profile-name">
+                minlength="2"
+                maxlength="40">
               <span id="profile-name-error" class="error"></span>
             </label>
             <label class="edit-form__input-label">
               <input class="edit-form__input edit-form__input_kind_profile-description"
               placeholder="Введите данные о себе"
               type="text"
+              name="profile-description"
               required
-              name="profile-description">
+              minlength="2"
+              maxlength="200">
               <span id="profile-description-error" class="error"></span>
             </label>
           </fieldset>
-          <input class="edit-form__submit-button edit-form__submit-button_type_profile" type="submit" value="Сохранить">
+          <button class="edit-form__submit-button edit-form__submit-button_type_profile"
+          type="submit"
+          disabled
+          >Сохранить</button>
         </form>
     </div>
   </section>
@@ -79,20 +86,26 @@
               <input class="edit-form__input edit-form__input_kind_create-photoCard-name"
               placeholder="Название"
               type="text"
+              name="create-photoCard-name"
               required
-              name="create-photoCard-name">
-              <span id="create-photoCard-name-error" class="error"> </span>
+              minlength="2"
+              maxlength="30">
+              <span id="create-photoCard-name-error" class="error"></span>
             </label>
             <label class="edit-form__input-label">
               <input class="edit-form__input edit-form__input_kind_create-photoCard-link"
               placeholder="Ссылка на картинку"
-              type="text"
-              required
-              name="create-photoCard-link">
-              <span id="create-photoCard-link-error" class="error">  </span>
+              type="url"
+              name="create-photoCard-link"
+              required>
+              <span id="create-photoCard-link-error" class="error"></span>
             </label>
           </fieldset>
-          <input class="edit-form__submit-button edit-form__submit-button_type_create-photoCard" type="submit" value="Создать">
+          <button
+          class="edit-form__submit-button edit-form__submit-button_type_create-photoCard"
+          type="submit"
+          disabled
+          >Создать</button>
         </form>
     </div>
   </section>
@@ -125,7 +138,7 @@
     </li>
   </template>
 
-  <script type="module" src="./scripts/index.js"></script>
+  <script type="module" src="./scripts/validation-config.js"></script>
   <script type="module" src="./scripts/index.js"></script>
 </body>
 </html>
