@@ -56,8 +56,9 @@
 @import url('../blocks/edit-form/__input/edit-form__input.css');
 @import url('../blocks/edit-form/__input/_type/edit-form__input_type_invalid.css');
 @import url('../blocks/edit-form/__submit-button/edit-form__submit-button.css');
-@import url('../blocks/edit-form/__submit-button/_state/edit-form__submit-button_state_disabled.css');
-@import url('../blocks/error/error.css');
+@import url('../blocks/edit-form/__submit-button/_disabled/edit-form__submit-button_disabled.css');
+@import url('../blocks/edit-form/__input-error/edit-form__input-error.css');
+@import url('../blocks/edit-form/__input-error/_visiable/edit-form__input-error_visiable.css');
 
 /* figure-space */
 @import url('../blocks/figure-space/figure-space.css');

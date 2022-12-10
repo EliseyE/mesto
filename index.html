@@ -41,10 +41,10 @@
     <h2 class="footer__copyright">© 2022 Mesto Russia</h2>
   </footer>
 
-  <section class="popup popup_type_profile">
+  <section class="popup popup_type_profile popup_is-opened">
     <div class="popup__container">
         <button class="popup__close-button popup__close-button_type_profile" type="button"></button>
-        <form class="edit-form edit-form_type_profile" name="edit-form_type_profile">
+        <form class="edit-form edit-form_type_profile" name="edit-form_type_profile" novalidate>
           <h2 class="edit-form__title">Редактировать профиль</h2>
           <fieldset class="edit-form__input-container">
             <label class="edit-form__input-label">
@@ -52,25 +52,26 @@
                 placeholder="Введите ваше имя"
                 type="text"
                 name="profile-name"
+                id="profile-name"
                 required
                 minlength="2"
                 maxlength="40">
-              <span id="profile-name-error" class="error"></span>
+              <span class="edit-form__input-error profile-name-error"></span>
             </label>
             <label class="edit-form__input-label">
               <input class="edit-form__input edit-form__input_kind_profile-description"
               placeholder="Введите данные о себе"
               type="text"
               name="profile-description"
+              id="profile-description"
               required
               minlength="2"
               maxlength="200">
-              <span id="profile-description-error" class="error"></span>
+              <span class="edit-form__input-error profile-description-error"></span>
             </label>
           </fieldset>
           <button class="edit-form__submit-button edit-form__submit-button_type_profile"
           type="submit"
-          disabled
           >Сохранить</button>
         </form>
     </div>
@@ -79,7 +80,7 @@
   <section class="popup popup_type_create-photoCard">
     <div class="popup__container">
         <button class="popup__close-button popup__close-button_type_create-photoCard" type="button"></button>
-        <form class="edit-form edit-form_type_create-photoCard" name="edit-form_type_create-photoCard">
+        <form class="edit-form edit-form_type_create-photoCard" name="edit-form_type_create-photoCard" novalidate>
           <h2 class="edit-form__title">Новое место</h2>
           <fieldset class="edit-form__input-container">
             <label class="edit-form__input-label">
@@ -87,24 +88,25 @@
               placeholder="Название"
               type="text"
               name="create-photoCard-name"
+              id="create-photoCard-name"
               required
               minlength="2"
               maxlength="30">
-              <span id="create-photoCard-name-error" class="error"></span>
+              <span class="edit-form__input-error create-photoCard-name-error"></span>
             </label>
             <label class="edit-form__input-label">
               <input class="edit-form__input edit-form__input_kind_create-photoCard-link"
               placeholder="Ссылка на картинку"
               type="url"
               name="create-photoCard-link"
+              id="create-photoCard-link"
               required>
-              <span id="create-photoCard-link-error" class="error"></span>
+              <span class="edit-form__input-error create-photoCard-link-error"></span>
             </label>
           </fieldset>
           <button
           class="edit-form__submit-button edit-form__submit-button_type_create-photoCard"
           type="submit"
-          disabled
           >Создать</button>
         </form>
     </div>
@@ -138,7 +140,7 @@
     </li>
   </template>
 
-  <script type="module" src="./scripts/validation-config.js"></script>
+  <script type="module" src="./scripts/validate.js"></script>
   <script type="module" src="./scripts/index.js"></script>
 </body>
 </html>
