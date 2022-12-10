@@ -1,6 +1,5 @@
 import initialCards from './data.js';
-import validationConfig from './validationConfig.js';
-import {toggleSubmitButton, isInputValid} from './validate.js'
+import {validateWhenOpenForm} from './validate.js';
 
 // page
 const page = document.querySelector('.page');
@@ -85,13 +84,7 @@ const uploadProfileDataIntoEditFormInputFields = function () {
 // open profile edit form
 const openProfileEditForm = function () {
   uploadProfileDataIntoEditFormInputFields();
-  const form = popupEditProfile.querySelector(validationConfig.formSelector);
-  const inputList = Array.from(popupEditProfile.querySelectorAll(validationConfig.inputSelector));
-  const submitButton = popupEditProfile.querySelector(validationConfig.submitButtonSelector);
-  inputList.forEach(input => {
-    isInputValid(form, input, validationConfig)
-  });
-  toggleSubmitButton(inputList, submitButton, validationConfig);
+  validateWhenOpenForm(popupEditProfile);
   openPopup(popupEditProfile);
 }
 
@@ -165,7 +158,7 @@ addPhotoCardsFromArrayOfObjects(initialCards);
 
 // open
 const openPhotoCardCreateForm = function () {
-
+  validateWhenOpenForm(popupCreatePhotoCard);
   openPopup(popupCreatePhotoCard)
 }
 

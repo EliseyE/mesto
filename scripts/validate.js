@@ -66,4 +66,20 @@ const enableValidation = function (config) {
 
 enableValidation(validationConfig);
 
-export {toggleSubmitButton, isInputValid};
+const validateWhenOpenForm = function (popupType) {
+  const form = popupType.querySelector(validationConfig.formSelector);
+  const inputList = Array.from(popupType.querySelectorAll(validationConfig.inputSelector));
+  const submitButton = popupType.querySelector(validationConfig.submitButtonSelector);
+
+    inputList.forEach(input => {
+      isInputValid(form, input, validationConfig)
+
+      if(inputList.every(input => { return input.value === '' })) {
+      hideInputError(form, input, validationConfig);
+      }
+    });
+
+  toggleSubmitButton(inputList, submitButton, validationConfig);
+}
+
+export {validateWhenOpenForm};
