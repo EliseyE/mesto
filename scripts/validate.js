@@ -40,7 +40,7 @@ const setEventListeners = function (form, config) {
   const inputList = Array.from(form.querySelectorAll(inputSelector));
   const submitButton = form.querySelector(submitButtonSelector);
 
-  toggleSubmitButton(inputList, submitButton, restConfig);
+  // toggleSubmitButton(inputList, submitButton, restConfig);
 
   inputList.forEach(input => {
     input.addEventListener('input', () => {
@@ -65,3 +65,5 @@ const enableValidation = function (config) {
 }
 
 enableValidation(validationConfig);
+
+export {toggleSubmitButton, isInputValid};
