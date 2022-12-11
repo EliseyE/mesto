@@ -1,5 +1,5 @@
 import initialCards from './data.js';
-import {validateWhenOpenForm} from './validate.js';
+import {resetFormState} from './validate.js';
 
 // page
 const page = document.querySelector('.page');
@@ -37,7 +37,7 @@ const popupImagePhoto = popupImage.querySelector('.figure-space__image');
 const popupImageCaption = popupImage.querySelector('.figure-space__caption');
 
 // keys
-const Escape = 'Escape';
+const escCode = 'Escape';
 
 
 // functions
@@ -46,7 +46,7 @@ const Escape = 'Escape';
 
 // close by Escape
 const closePopupByKeyUp = function (e) {
-  if(e.key === Escape) {
+  if(e.key === escCode) {
     const openedPopup = document.querySelector('.popup_is-opened');
     closePopup(openedPopup)
   }
@@ -84,7 +84,7 @@ const uploadProfileDataIntoEditFormInputFields = function () {
 // open profile edit form
 const openProfileEditForm = function () {
   uploadProfileDataIntoEditFormInputFields();
-  validateWhenOpenForm(popupEditProfile);
+  resetFormState(popupEditProfile);
   openPopup(popupEditProfile);
 }
 
@@ -103,15 +103,15 @@ const handleProfileDataSubmit = function (evt) {
 
 // popup image functions
 // wtite data in popup-image
-const writeDataInPopupImage = function (element) {
-  popupImagePhoto.src = element.querySelector('.photoCard__image').src;
-  popupImagePhoto.alt = element.querySelector('.photoCard__description').textContent
-  popupImageCaption.textContent = popupImagePhoto.alt;
+const writeDataInPopupImage = function (nameValue, linkValue) {
+  popupImagePhoto.src = linkValue;
+  popupImagePhoto.alt = nameValue;
+  popupImageCaption.textContent = nameValue;
 }
 
 // open popup image
-const openPopupImage = function (element) {
-  writeDataInPopupImage(element);
+const openPopupImage = function (nameValue, linkValue) {
+  writeDataInPopupImage(nameValue, linkValue);
   openPopup(popupImage);
 }
 
@@ -128,7 +128,7 @@ const createPhotoCard = function (nameValue, linkValue) {
 
   newPhotoCard.querySelector('.photoCard__like-button').addEventListener('click', (evt) => { evt.target.classList.toggle('photoCard__like-button_active');});
   newPhotoCard.querySelector('.photoCard__trash-button').addEventListener('click', (evt) => { evt.target.closest('.photoCard').remove() });
-  newPhotoCardImage.addEventListener('click', function () { openPopupImage(newPhotoCard) });
+  newPhotoCardImage.addEventListener('click', function () { openPopupImage(nameValue, linkValue) });
   return newPhotoCard;
 }
 
@@ -158,7 +158,7 @@ addPhotoCardsFromArrayOfObjects(initialCards);
 
 // open
 const openPhotoCardCreateForm = function () {
-  validateWhenOpenForm(popupCreatePhotoCard);
+  resetFormState(popupCreatePhotoCard);
   openPopup(popupCreatePhotoCard)
 }
 

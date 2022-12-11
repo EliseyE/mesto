@@ -65,7 +65,7 @@ const enableValidation = function (config) {
 enableValidation(validationConfig);
 
 // initial validation when form is opening
-const validateWhenOpenForm = function (popupType) {
+const resetFormState = function (popupType) {
   const form = popupType.querySelector(validationConfig.formSelector);
   const inputList = Array.from(popupType.querySelectorAll(validationConfig.inputSelector));
   const submitButton = popupType.querySelector(validationConfig.submitButtonSelector);
@@ -82,4 +82,4 @@ const validateWhenOpenForm = function (popupType) {
   toggleSubmitButton(inputList, submitButton, validationConfig);
 }
 
-export {validateWhenOpenForm};
+export {resetFormState};
