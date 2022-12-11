@@ -40,8 +40,6 @@ const setEventListeners = function (form, config) {
   const inputList = Array.from(form.querySelectorAll(inputSelector));
   const submitButton = form.querySelector(submitButtonSelector);
 
-  // toggleSubmitButton(inputList, submitButton, restConfig);
-
   inputList.forEach(input => {
     input.addEventListener('input', () => {
     isInputValid(form, input, restConfig);
@@ -66,6 +64,7 @@ const enableValidation = function (config) {
 
 enableValidation(validationConfig);
 
+// initial validation when form is opening
 const validateWhenOpenForm = function (popupType) {
   const form = popupType.querySelector(validationConfig.formSelector);
   const inputList = Array.from(popupType.querySelectorAll(validationConfig.inputSelector));
@@ -74,6 +73,7 @@ const validateWhenOpenForm = function (popupType) {
     inputList.forEach(input => {
       isInputValid(form, input, validationConfig)
 
+      // if all inputs are '', then it means form is clear after restarting
       if(inputList.every(input => { return input.value === '' })) {
       hideInputError(form, input, validationConfig);
       }
