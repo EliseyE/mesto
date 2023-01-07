@@ -4,7 +4,7 @@
   height: 24px;
   border: 1px solid #fff;
   background-color: rgba(0, 0, 0, 0);
-  background-image: url('../../../images/profile__edit-button.png');
+  background-image: url('../../../images/profile__edit-button.svg');
   background-position: center;
   background-repeat: no-repeat;
   transition: .35s;
