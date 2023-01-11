@@ -2,52 +2,49 @@ export class FormValidator {
   constructor(config, form) {
     this._config = config;
     this._form = form;
+    this._inputList = Array.from(form.querySelectorAll(config.inputSelector));
+    this._submitButton = form.querySelector(config.submitButtonSelector);
   }
 
-  _showInputError = function (form, input, config) {
-    const errorElement = form.querySelector(`.${input.id}-error`);
+  _showInputError = function (input) {
+    const errorElement = this._form.querySelector(`.${input.id}-error`);
     errorElement.textContent = input.validationMessage;
-    errorElement.classList.add(config.errorClass);
-    input.classList.add(config.inputErrorClass);
+    errorElement.classList.add(this._config.errorClass);
+    input.classList.add(this._config.inputErrorClass);
   }
 
-  _hideInputError = function (form, input, config) {
-    const errorElement = form.querySelector(`.${input.id}-error`);
+  _hideInputError = function (input) {
+    const errorElement = this._form.querySelector(`.${input.id}-error`);
     errorElement.textContent = '';
-    errorElement.classList.remove(config.errorClass);
-    input.classList.remove(config.inputErrorClass);
+    errorElement.classList.remove(this._config.errorClass);
+    input.classList.remove(this._config.inputErrorClass);
   }
 
-  _isInputValid = function (form, input, config) {
+  _isInputValid = function (input) {
     if(!input.validity.valid)
-      this._showInputError(form, input, config);
+      this._showInputError(input);
     else
-      this._hideInputError(form, input, config);
+      this._hideInputError(input);
   }
 
-  _toggleSubmitButton = function (inputList, submitButton, config) {
-    const isFormValid = inputList.every(input => input.validity.valid);
+  _toggleSubmitButton = function () {
+    const isFormValid = this._inputList.every(input => input.validity.valid);
 
     if(isFormValid) {
-      submitButton.classList.remove(config.inactiveButtonClass);
-      submitButton.disabled = '';
+      this._submitButton.classList.remove(this._config.inactiveButtonClass);
+      this._submitButton.disabled = '';
     }
     else {
-      submitButton.classList.add(config.inactiveButtonClass);
-      submitButton.disabled = 'disabled';
+      this._submitButton.classList.add(this._config.inactiveButtonClass);
+      this._submitButton.disabled = 'disabled';
     }
   }
 
-  _setEventListeners = function (form, config) {
-    const { inputSelector, submitButtonSelector, ...restConfig } = config;
-
-    const inputList = Array.from(form.querySelectorAll(inputSelector));
-    const submitButton = form.querySelector(submitButtonSelector);
-
-    inputList.forEach(input => {
+  _setEventListeners = function () {
+    this._inputList.forEach(input => {
       input.addEventListener('input', () => {
-      this._isInputValid(form, input, restConfig);
-      this._toggleSubmitButton(inputList, submitButton, restConfig);
+      this._isInputValid(input);
+      this._toggleSubmitButton();
       });
     });
   }
@@ -62,18 +59,16 @@ export class FormValidator {
 
   // initial validation when form is opening
   resetFormState = function () {
-    const inputList = Array.from(this._form.querySelectorAll(this._config.inputSelector));
-    const submitButton = this._form.querySelector(this._config.submitButtonSelector);
 
-      inputList.forEach(input => {
-        this._isInputValid(this._form, input, this._config)
+      this._inputList.forEach(input => {
+        this._isInputValid(input)
 
         // if all inputs are '', then it means form is clear after restarting
-        if(inputList.every(input => { return input.value === '' })) {
-        this._hideInputError(this._form, input, this._config);
+        if(this._inputList.every(input => { return input.value === '' })) {
+        this._hideInputError(input);
         }
       });
 
-    this._toggleSubmitButton(inputList, submitButton, this._config);
+    this._toggleSubmitButton();
   }
 }
