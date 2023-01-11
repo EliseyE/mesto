@@ -1,3 +1,5 @@
+import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
 import initialCards from './data.js';
 import {resetFormState} from './validate.js';
 
@@ -115,26 +117,9 @@ const openPopupImage = function (nameValue, linkValue) {
   openPopup(popupImage);
 }
 
-// photoCard functions
-// create photoCard
-const createPhotoCard = function (nameValue, linkValue) {
-  const photoCardTemplate = page.querySelector('#photoCard').content;
-  const newPhotoCard = photoCardTemplate.querySelector('.photoCard').cloneNode(true);
-  const newPhotoCardImage = newPhotoCard.querySelector('.photoCard__image');
-
-  newPhotoCard.querySelector('.photoCard__description').textContent = nameValue;
-  newPhotoCardImage.alt = nameValue;
-  newPhotoCardImage.src = linkValue;
-
-  newPhotoCard.querySelector('.photoCard__like-button').addEventListener('click', (evt) => { evt.target.classList.toggle('photoCard__like-button_active');});
-  newPhotoCard.querySelector('.photoCard__trash-button').addEventListener('click', (evt) => { evt.target.closest('.photoCard').remove() });
-  newPhotoCardImage.addEventListener('click', function () { openPopupImage(nameValue, linkValue) });
-  return newPhotoCard;
-}
-
 const addPhotoCard = function (nameValue, linkValue) {
-  const newPhotoCard = createPhotoCard(nameValue, linkValue);
-  collectionItemList.prepend(newPhotoCard);
+  const newPhotoCard = new Card(nameValue, linkValue, '#photoCard', openPopupImage);
+  collectionItemList.prepend(newPhotoCard.getCard());
 }
 
 // photoCard create edit form
