@@ -20,7 +20,6 @@
 * [Ссылка на макет в Figma 2](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1)
 
 * [Ссылка на макет в Figma 3](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0%3A1)
-#
 
 Благодаря команде, подготовившей дизайн, на сайте вы можете увидеть:
 
