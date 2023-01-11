@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
     name: 'Сургут',
     link: 'https://live.staticflickr.com/65535/52524339710_4783c5abb5_k.jpg'
@@ -25,4 +25,5 @@ const initialCards = [
   }
 ];
 
-export default initialCards;
+export const profileEditForm = document.forms["edit-form_type_profile"];
+export const photoCardCreateForm = document.forms["edit-form_type_create-photoCard"];

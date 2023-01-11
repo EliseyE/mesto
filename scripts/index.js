@@ -1,10 +1,10 @@
 import { Card } from './Card.js';
-import initialCards from './data.js';
+import { initialCards, profileEditForm, photoCardCreateForm }  from './data.js';
 import {profileEditFormValidator, photoCardCreateFormValidator} from './validate.js';
 
 // page
 const page = document.querySelector('.page');
-const closeButtons = page.querySelectorAll('.popup__close-button');
+const popupsCloseButtons = page.querySelectorAll('.popup__close-button');
 
 // profile variables
 const profile = page.querySelector('.profile');
@@ -17,7 +17,6 @@ const profileDescription = profile.querySelector('.profile__description');
 const popupEditProfile = page.querySelector('.popup_type_profile');
 
 // profile edit form variables
-export const profileEditForm = document.forms["edit-form_type_profile"];
 const profileNameInputField = profileEditForm.querySelector('.edit-form__input_kind_profile-name');
 const profileDescriptionInputField = profileEditForm.querySelector('.edit-form__input_kind_profile-description');
 
@@ -25,7 +24,6 @@ const profileDescriptionInputField = profileEditForm.querySelector('.edit-form__
 const popupCreatePhotoCard = page.querySelector('.popup_type_create-photoCard');
 
 // photoCard create form varables
-export const photoCardCreateForm = document.forms["edit-form_type_create-photoCard"];
 const photoCardNameInputField = photoCardCreateForm.querySelector('.edit-form__input_kind_create-photoCard-name');
 const photoCardLinkInputField = photoCardCreateForm.querySelector('.edit-form__input_kind_create-photoCard-link');
 
@@ -148,7 +146,7 @@ const openPhotoCardCreateForm = function () {
 
 // listeners
 // popup
-closeButtons.forEach(button => {
+popupsCloseButtons.forEach(button => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
