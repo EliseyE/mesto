@@ -1,7 +1,6 @@
 import { Card } from './Card.js';
-import { FormValidator } from './FormValidator.js';
 import initialCards from './data.js';
-import {resetFormState} from './validate.js';
+import {profileEditFormValidator, photoCardCreateFormValidator} from './validate.js';
 
 // page
 const page = document.querySelector('.page');
@@ -18,7 +17,7 @@ const profileDescription = profile.querySelector('.profile__description');
 const popupEditProfile = page.querySelector('.popup_type_profile');
 
 // profile edit form variables
-const profileEditForm = document.forms["edit-form_type_profile"];
+export const profileEditForm = document.forms["edit-form_type_profile"];
 const profileNameInputField = profileEditForm.querySelector('.edit-form__input_kind_profile-name');
 const profileDescriptionInputField = profileEditForm.querySelector('.edit-form__input_kind_profile-description');
 
@@ -26,7 +25,7 @@ const profileDescriptionInputField = profileEditForm.querySelector('.edit-form__
 const popupCreatePhotoCard = page.querySelector('.popup_type_create-photoCard');
 
 // photoCard create form varables
-const photoCardCreateForm = document.forms["edit-form_type_create-photoCard"];
+export const photoCardCreateForm = document.forms["edit-form_type_create-photoCard"];
 const photoCardNameInputField = photoCardCreateForm.querySelector('.edit-form__input_kind_create-photoCard-name');
 const photoCardLinkInputField = photoCardCreateForm.querySelector('.edit-form__input_kind_create-photoCard-link');
 
@@ -86,7 +85,7 @@ const uploadProfileDataIntoEditFormInputFields = function () {
 // open profile edit form
 const openProfileEditForm = function () {
   uploadProfileDataIntoEditFormInputFields();
-  resetFormState(popupEditProfile);
+  profileEditFormValidator.resetFormState();
   openPopup(popupEditProfile);
 }
 
@@ -143,7 +142,7 @@ addPhotoCardsFromArrayOfObjects(initialCards);
 
 // open
 const openPhotoCardCreateForm = function () {
-  resetFormState(popupCreatePhotoCard);
+  photoCardCreateFormValidator.resetFormState();
   openPopup(popupCreatePhotoCard)
 }
 
