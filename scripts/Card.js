@@ -14,6 +14,7 @@ static selectors = {
     this._link = link;
     this._templateSelector = cardTemplate;
     this._operateCardImage = operateCardImage;
+    this._card = '';
   }
 
   _getTemplate() {
@@ -38,7 +39,7 @@ static selectors = {
 
   _addListeners = function (card, cardImage) {
     card.querySelector(Card.selectors.cardLikeButton).addEventListener('click', this._toggleCardLike);
-    card.querySelector(Card.selectors.cardTrashButton).addEventListener('click', this._deleteCard);
+    card.querySelector(Card.selectors.cardTrashButton).addEventListener('click', () => this._deleteCard());
     cardImage.addEventListener('click', () => this._operateCardImage(this._name, this._link));
   }
 
@@ -46,12 +47,13 @@ static selectors = {
     evt.target.classList.toggle(Card.selectors.cardLikeButtonActive);
   }
 
-  _deleteCard = function (evt) {
-    evt.target.closest(Card.selectors.photoCard).remove();
+  _deleteCard = function () {
+    this._card.remove();
+    this._card = null;
   }
 
   getCard = function () {
-    const card = this._createPhotoCard();
-    return card;
+    this._card = this._createPhotoCard();
+    return this._card;
   }
 }
