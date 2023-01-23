@@ -1,6 +1,7 @@
 import { Card } from './Card.js';
 import { initialCards, profileEditForm, photoCardCreateForm }  from './data.js';
 import {profileEditFormValidator, photoCardCreateFormValidator} from './validate.js';
+import { Section } from './Section.js';
 
 // page
 const page = document.querySelector('.page');
