@@ -2,6 +2,8 @@ import { Card } from './Card.js';
 import { initialCards, profileEditForm, photoCardCreateForm }  from './data.js';
 import {profileEditFormValidator, photoCardCreateFormValidator} from './validate.js';
 import { Section } from './Section.js';
+import { Popup } from './Popup.js';
+import { PopupWithImage } from './PopupWithImage.js';
 
 // page
 const page = document.querySelector('.page');
@@ -48,14 +50,14 @@ const escCode = 'Escape';
 const closePopupByKeyUp = function (e) {
   if(e.key === escCode) {
     const openedPopup = document.querySelector('.popup_is-opened');
-    closePopup(openedPopup)
+    closePopup(openedPopup);
   }
 }
 
 const closePopupByOverlay = function (e) {
   if(e.target === e.currentTarget) {
     const openedPopup = document.querySelector('.popup_is-opened');
-    closePopup(openedPopup)
+    closePopup(openedPopup);
   }
 }
 
