@@ -16,6 +16,13 @@ const profileAddPhotoCardButton = profile.querySelector('.profile__add-button');
 const profileName = profile.querySelector('.profile__name');
 const profileDescription = profile.querySelector('.profile__description');
 
+
+const profileInfo = {
+  name: '.profile__name',
+  description: '.profile__description'
+};
+
+
 // profile popup
 const popupEditProfile = page.querySelector('.popup_type_profile');
 

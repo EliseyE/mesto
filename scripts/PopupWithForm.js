@@ -21,7 +21,6 @@ export class PopupWithForm extends Popup {
     });
 
     return this._inputsData;
-
   }
 
   setEventListeners = function() {
