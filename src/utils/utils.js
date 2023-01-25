@@ -1,6 +1,6 @@
-import { FormValidator } from './FormValidator.js';
+import { FormValidator } from '../components/FormValidator.js';
 import validationConfig from './validationConfig.js';
-import {profileEditForm, photoCardCreateForm} from './data.js';
+import {profileEditForm, photoCardCreateForm} from './constants.js';
 
 const profileEditFormValidator = new FormValidator(validationConfig, profileEditForm);
 profileEditFormValidator.enableValidation();

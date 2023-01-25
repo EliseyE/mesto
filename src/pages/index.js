@@ -1,9 +1,12 @@
-import { Card } from './Card.js';
-import { Section } from './Section.js';
-import { Popup } from './Popup.js';
-import { PopupWithImage } from './PopupWithImage.js';
-import { PopupWithForm } from './PopupWithForm.js';
-import { UserInfo } from './UserInfo.js';
+// import './index.css';
+import validationConfig from '../utils/validationConfig.js';
+import { FormValidator } from '../components/FormValidator.js';
+import { Card } from '../components/Card.js';
+import { Section } from '../components/Section.js';
+import { Popup } from '../components/Popup.js';
+import { PopupWithImage } from '../components/PopupWithImage.js';
+import { PopupWithForm } from '../components/PopupWithForm.js';
+import { UserInfo } from '../components/UserInfo.js';
 import {
   initialCards,
   pageConfig,
@@ -11,11 +14,11 @@ import {
   profileAddPhotoCardButton,
   profileInfo,
   collectionItemList
-}  from './data.js';
+}  from '../utils/constants.js';
 import {
   profileEditFormValidator,
   photoCardCreateFormValidator
-} from './validate.js';
+} from '../utils/utils.js';
 
 // main
 
