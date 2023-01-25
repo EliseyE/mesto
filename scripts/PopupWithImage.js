@@ -9,19 +9,20 @@ export class PopupWithImage extends Popup {
 
   constructor(popupSelector) {
     super(popupSelector);
-    this._popupImagePhoto = this._popup.querySelector(popupImagePhoto);
-    this._popupImageCaption = this._popup.querySelector(popupImageCaption);
+    this._popupImagePhoto = this._popup.querySelector(PopupWithImage.selectors.popupImagePhoto);
+    this._popupImageCaption = this._popup.querySelector(PopupWithImage.selectors.popupImageCaption);
 
   }
 
-  open(nameValue, linkValue) {
-    this._writeDataInPopupImage(nameValue, linkValue);
+  open(cardInfo) {
+    this._writeDataInPopupImage(cardInfo);
     super.open();
+
   }
 
-  _writeDataInPopupImage = function (nameValue, linkValue) {
-    this._popupImagePhoto.src = linkValue;
-    this._popupImagePhoto.alt = nameValue;
-    this._popupImageCaption.textContent = nameValue;
+  _writeDataInPopupImage = function (photoCard) {
+    this._popupImagePhoto.src = photoCard.link;
+    this._popupImagePhoto.alt = photoCard.name;
+    this._popupImageCaption.textContent = photoCard.name;
   }
 }

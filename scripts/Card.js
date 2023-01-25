@@ -9,9 +9,9 @@ static selectors = {
   cardTrashButton: '.photoCard__trash-button'
 }
 
-  constructor(name, link, cardTemplate, handleCardClick) {
-    this._name = name;
-    this._link = link;
+  constructor(object, cardTemplate, handleCardClick) {
+    this._name = object.name;
+    this._link = object.link;
     this._templateSelector = cardTemplate;
     this._handleCardClick = handleCardClick;
     this._card = '';
@@ -40,7 +40,7 @@ static selectors = {
   _addListeners = function (card, cardImage) {
     card.querySelector(Card.selectors.cardLikeButton).addEventListener('click', this._toggleCardLike);
     card.querySelector(Card.selectors.cardTrashButton).addEventListener('click', () => this._deleteCard());
-    cardImage.addEventListener('click', () => this._handleCardClick(this._card, this._link));
+    cardImage.addEventListener('click', () => this._handleCardClick({name: this._name, link: this._link}));
   }
 
   _toggleCardLike = function (evt) {
