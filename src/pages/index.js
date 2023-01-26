@@ -1,4 +1,4 @@
-// import './index.css';
+import './index.css';
 import validationConfig from '../utils/validationConfig.js';
 import { FormValidator } from '../components/FormValidator.js';
 import { Card } from '../components/Card.js';

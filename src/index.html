@@ -8,18 +8,17 @@
   <meta name="keywords" content="Места России сервис публикации фотографий Яндекс Практикум">
   <meta name="author" content="Есаулков Елисей">
   <title>Mesto Russia</title>
-  <link rel="shortcut icon" sizes="32x32" href="./images/icons/favicon-32x32.png" type="image/png">
-  <link rel="stylesheet" href="./pages/index.css">
+  <link rel="shortcut icon" sizes="32x32" href="<%=require('./images/icons/favicon-32x32.png')%>" type="image/png">
 </head>
 <body class="page">
     <header class="header page__header">
-      <img src="./images/logos/header-logo.svg" alt="Место Россия" class="header__logo">
+      <img src="<%=require('./images/logos/header-logo.svg')%>" alt="Место Россия" class="header__logo">
     </header>
   <main class="content page__content page__side-space">
       <section class="profile" aria-label="Профайл">
           <img
             class="profile__avatar-image"
-            src="./images/profile__avatar-image.jpg"
+            src="<%=require('./images/profile__avatar-image.jpg')%>"
             alt="Аватар профиля"
           >
         <div class="profile__info">
@@ -140,6 +139,5 @@
     </li>
   </template>
 
-  <script type="module" src="./pages/index.js"></script>
 </body>
 </html>
