@@ -52,7 +52,7 @@ export const pageConfig = {
   createPhotoCardNameInput: 'create-photoCard-name',
   createPhotoCardLinkInput: 'create-photoCard-link',
   popupIsOpened: 'popup_is-opened',
-  popupsCloseButton: '.popup__close-button',
+  popupCloseButton: '.popup__close-button',
   editForm: '.edit-form',
   inputSelector: '.edit-form__input',
   profileEditForm: "edit-form_type_profile",
@@ -79,7 +79,7 @@ const editFormSelectors = {
 
 const popupSelectors = {
   popupIsOpened: pageConfig.popupIsOpened,
-  popupsCloseButton: pageConfig.popupsCloseButton
+  popupCloseButton: pageConfig.popupCloseButton
 };
 
 export const popupEditProfileSelectors = Object.assign(
