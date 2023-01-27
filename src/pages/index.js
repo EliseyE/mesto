@@ -35,9 +35,13 @@ const handleCardClick = function(cardInfo) {
   popupImage.open(cardInfo);
 };
 
+const createCard = function(cardData) {
+  return new Card(cardData, cardSelectors, handleCardClick);
+};
+
 // add photoCards from array of objects
 const renderer = function (cardData) {
-  const newPhotoCard = new Card(cardData, cardSelectors, handleCardClick);
+  const newPhotoCard = createCard(cardData);
   photoCardGallery.addItem(newPhotoCard.getCard());
 };
 
@@ -46,10 +50,9 @@ photoCardGallery.renderItems();
 
 // Profile edit from
 const popupEditProfile = new PopupWithForm(popupEditProfileSelectors,
-  (e) => {
+  (e, currentInputsValues) => {
     e.preventDefault();
 
-    const currentInputsValues = popupEditProfile.getInputValues();
     userInfo.setUserInfo({name: currentInputsValues[pageConfig.profileNameInput], description: currentInputsValues[pageConfig.profileDescriptionInput]});
     popupEditProfile.close();
   }
@@ -74,17 +77,16 @@ const openProfileEditForm = function () {
 
 // Create photo card form
 const popupAddCard = new PopupWithForm(popupCreatePhotoCardSelectors,
-  (e) => {
+  (e, currentInputsValues) => {
     e.preventDefault();
 
-    const currentInputsValues = popupAddCard.getInputValues();
-    const newCardData =
+    const cardData =
     { name: currentInputsValues[pageConfig.createPhotoCardNameInput],
       link: currentInputsValues[pageConfig.createPhotoCardLinkInput] };
-    // renderer(newCardData) считаю, что здесь нужно использовать renderer, а не AddItem:
-    // 1. Код повторяется;
-    // 2. Из полей мы получаем не DOM-элемент, а данные, которые можно оформить в объект.
-    const newPhotoCard = new Card(newCardData, cardSelectors, handleCardClick);
+      // Функция создания карточки вынесена отдельно в createCard()
+      // Далее созданная карточка добавляется. Функция createCard() переиспользована в renderer
+      // Получается, что renderer в таком случае здесь не требуется. Исправлено в соотвествии с замечаниями.
+    const newPhotoCard = createCard(cardData);
     photoCardGallery.addItem(newPhotoCard.getCard());
     popupAddCard.close();
   }
