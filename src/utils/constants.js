@@ -26,9 +26,6 @@ export const initialCards = [
   }
 ];
 
-export const profileEditForm = document.forms["edit-form_type_profile"];
-export const photoCardCreateForm = document.forms["edit-form_type_create-photoCard"];
-
 // pageConfig
 export const pageConfig = {
   page: '.page',
@@ -38,15 +35,63 @@ export const pageConfig = {
   profileDescription: '.profile__description',
   collectionItemList: '.collection__item-list',
   popupImage: '.popup_type_image',
+  popupImagePhoto: '.figure-space__image',
+  popupImageCaption: '.figure-space__caption',
+  photoCard: '.photoCard',
   photoCardId: '#photoCard',
+  cardImage: '.photoCard__image',
+  cardImageDescription: '.photoCard__description',
+  cardLikeButton: '.photoCard__like-button',
+  cardLikeButtonActive: 'photoCard__like-button_active',
+  cardTrashButton: '.photoCard__trash-button',
   photoCardGallery: '.collection__item-list',
   popupEditProfile: '.popup_type_profile',
   profileNameInput: 'profile-name',
   profileDescriptionInput: 'profile-description',
   popopupCreatePhotoCard: '.popup_type_create-photoCard',
   createPhotoCardNameInput: 'create-photoCard-name',
-  createPhotoCardLinkInput: 'create-photoCard-link'
+  createPhotoCardLinkInput: 'create-photoCard-link',
+  popupIsOpened: 'popup_is-opened',
+  popupsCloseButton: '.popup__close-button',
+  editForm: '.edit-form',
+  inputSelector: '.edit-form__input',
+  profileEditForm: "edit-form_type_profile",
+  photoCardCreateForm: "edit-form_type_create-photoCard"
 };
+
+export const profileEditForm = document.forms[pageConfig.profileEditForm];
+export const photoCardCreateForm = document.forms[pageConfig.photoCardCreateForm];
+
+export const cardSelectors = {
+  cardTemplate: pageConfig.photoCardId,
+  photoCard: pageConfig.photoCard,
+  cardImage: pageConfig.cardImage,
+  cardImageDescription: pageConfig.cardImageDescription,
+  cardLikeButton: pageConfig.cardLikeButton,
+  cardLikeButtonActive: pageConfig.cardLikeButtonActive,
+  cardTrashButton: pageConfig.cardTrashButton
+};
+
+const editFormSelectors = {
+  editForm: pageConfig.editForm,
+  inputSelector: pageConfig.inputSelector
+};
+
+const popupSelectors = {
+  popupIsOpened: pageConfig.popupIsOpened,
+  popupsCloseButton: pageConfig.popupsCloseButton
+};
+
+export const popupEditProfileSelectors = Object.assign(
+  { popupSelector: pageConfig.popupEditProfile }, popupSelectors, editFormSelectors);
+
+export const popupCreatePhotoCardSelectors = Object.assign(
+  { popupSelector: pageConfig.popopupCreatePhotoCard }, popupSelectors, editFormSelectors);
+
+export const popupImageSelectors = Object.assign(
+  { popupSelector: pageConfig.popupImage,
+    popupImagePhoto: pageConfig.popupImagePhoto,
+    popupImageCaption: pageConfig.popupImageCaption }, popupSelectors);
 
 // page
 export const page = document.querySelector(pageConfig.page);

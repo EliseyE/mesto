@@ -2,16 +2,10 @@ import { Popup } from "./Popup.js";
 
 export class PopupWithImage extends Popup {
 
-  static selectors = {
-    popupImagePhoto: '.figure-space__image',
-    popupImageCaption: '.figure-space__caption'
-  }
-
-  constructor(popupSelector) {
-    super(popupSelector);
-    this._popupImagePhoto = this._popup.querySelector(PopupWithImage.selectors.popupImagePhoto);
-    this._popupImageCaption = this._popup.querySelector(PopupWithImage.selectors.popupImageCaption);
-
+  constructor(popupSelectors) {
+    super(popupSelectors);
+    this._popupImagePhoto = this._popup.querySelector(popupSelectors.popupImagePhoto);
+    this._popupImageCaption = this._popup.querySelector(popupSelectors.popupImageCaption);
   }
 
   open(cardInfo) {

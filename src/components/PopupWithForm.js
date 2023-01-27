@@ -2,16 +2,11 @@ import { Popup } from "./Popup.js";
 
 export class PopupWithForm extends Popup {
 
-  static selectors = {
-    form: '.edit-form',
-    inputSelector: '.edit-form__input'
-  }
-
-  constructor(popupSelector, submitForm) {
-    super(popupSelector);
+  constructor(popupSelectors, submitForm) {
+    super(popupSelectors);
     this._submitForm = submitForm;
-    this._form = this._popup.querySelector(PopupWithForm.selectors.form);
-    this._inputList = Array.from(this._form.querySelectorAll(PopupWithForm.selectors.inputSelector));
+    this._editForm = this._popup.querySelector(popupSelectors.editForm);
+    this._inputList = Array.from(this._editForm.querySelectorAll(popupSelectors.inputSelector));
     this._inputsData = {};
   }
 
@@ -35,11 +30,11 @@ export class PopupWithForm extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
-    this._form.addEventListener('submit', (e) => this._submitForm(e));
+    this._editForm.addEventListener('submit', (e) => this._submitForm(e));
   }
 
   close() {
     super.close();
-    setTimeout(() => { this._form.reset(); }, 100);
+    setTimeout(() => { this._editForm.reset(); }, 100);
   }
 }

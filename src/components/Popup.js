@@ -1,25 +1,21 @@
 export class Popup {
 
-  static selectors = {
-    popupIsOpened: 'popup_is-opened',
-    popupsCloseButton: '.popup__close-button'
-  }
-
-  constructor(popupSelector) {
-    this._popup = document.querySelector(popupSelector);
-    this.popupsCloseButton = this._popup.querySelector(Popup.selectors.popupsCloseButton);
+  constructor(popupSelectors) {
+    this._popup = document.querySelector([popupSelectors.popupSelector]);
+    this._popupsCloseButton = this._popup.querySelector('.popup__close-button');
+    this._popupIsOpened = popupSelectors.popupIsOpened;
 
     this._handleEscClose = this._handleEscClose.bind(this);
     this._handleOverlayClickClose = this._handleOverlayClickClose.bind(this);
   }
 
   open() {
-    this._popup.classList.add(Popup.selectors.popupIsOpened);
+    this._popup.classList.add(this._popupIsOpened);
     this._setTemporaryEventListeners();
   }
 
   close() {
-    this._popup.classList.remove(Popup.selectors.popupIsOpened);
+    this._popup.classList.remove(this._popupIsOpened);
     this._removeTemporaryEventListeners();
   }
 
@@ -36,7 +32,7 @@ export class Popup {
   }
 
   setEventListeners() {
-    this.popupsCloseButton.addEventListener('click', this.close.bind(this));
+    this._popupsCloseButton.addEventListener('click', this.close.bind(this));
   }
 
   _setTemporaryEventListeners() {

@@ -13,7 +13,10 @@ import {
   profileEditButton,
   profileAddPhotoCardButton,
   profileInfo,
-  collectionItemList
+  cardSelectors,
+  popupEditProfileSelectors,
+  popupCreatePhotoCardSelectors,
+  popupImageSelectors
 }  from '../utils/constants.js';
 import {
   profileEditFormValidator,
@@ -25,7 +28,7 @@ import {
 const userInfo = new UserInfo(profileInfo);
 
 // Popup with image
-const popupImage = new PopupWithImage(pageConfig.popupImage);
+const popupImage = new PopupWithImage(popupImageSelectors);
 popupImage.setEventListeners();
 
 const handleCardClick = function(cardInfo) {
@@ -33,20 +36,16 @@ const handleCardClick = function(cardInfo) {
 };
 
 // add photoCards from array of objects
-const renderer = function (object) {
-  const newPhotoCard = new Card(object, pageConfig.photoCardId, handleCardClick);
-  collectionItemList.prepend(newPhotoCard.getCard());
+const renderer = function (cardData) {
+  const newPhotoCard = new Card(cardData, cardSelectors, handleCardClick);
+  photoCardGallery.addItem(newPhotoCard.getCard());
 };
 
-const addCadrsToCollection = function (array) {
-  const photoCardGallery = new Section( { items: array,  renderer}, pageConfig.photoCardGallery);
-  photoCardGallery.renderItems();
-};
-
-addCadrsToCollection(initialCards);
+const photoCardGallery = new Section( { items: initialCards,  renderer }, pageConfig.photoCardGallery);
+photoCardGallery.renderItems();
 
 // Profile edit from
-const popupEditProfile = new PopupWithForm(pageConfig.popupEditProfile,
+const popupEditProfile = new PopupWithForm(popupEditProfileSelectors,
   (e) => {
     e.preventDefault();
 
@@ -74,26 +73,27 @@ const openProfileEditForm = function () {
 }
 
 // Create photo card form
-const popopupCreatePhotoCard = new PopupWithForm(pageConfig.popopupCreatePhotoCard,
+const popupAddCard = new PopupWithForm(popupCreatePhotoCardSelectors,
   (e) => {
     e.preventDefault();
 
-    const currentInputsValues = popopupCreatePhotoCard.getInputValues();
-    const array = [
-      {
-        name: currentInputsValues[pageConfig.createPhotoCardNameInput],
-        link: currentInputsValues[pageConfig.createPhotoCardLinkInput]
-      }
-    ];
-    addCadrsToCollection(array);
-    popopupCreatePhotoCard.close();
+    const currentInputsValues = popupAddCard.getInputValues();
+    const newCardData =
+    { name: currentInputsValues[pageConfig.createPhotoCardNameInput],
+      link: currentInputsValues[pageConfig.createPhotoCardLinkInput] };
+    // renderer(newCardData) считаю, что здесь нужно использовать renderer, а не AddItem:
+    // 1. Код повторяется;
+    // 2. Из полей мы получаем не DOM-элемент, а данные, которые можно оформить в объект.
+    const newPhotoCard = new Card(newCardData, cardSelectors, handleCardClick);
+    photoCardGallery.addItem(newPhotoCard.getCard());
+    popupAddCard.close();
   }
 );
-popopupCreatePhotoCard.setEventListeners();
+popupAddCard.setEventListeners();
 
 const openPhotoCardCreateForm = function () {
   photoCardCreateFormValidator.resetFormState();
-  popopupCreatePhotoCard.open();
+  popupAddCard.open();
 }
 
 // listeners

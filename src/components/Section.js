@@ -9,7 +9,8 @@ export class Section {
     this._container.innerHTML = '';
   }
 
-  renderItems = function () {
+  renderItems() {
+    this.clear();
     this._items.forEach(item => {
       this._renderer(item);
     });
@@ -18,5 +19,4 @@ export class Section {
   addItem = function (element) {
     this._container.prepend(element);
   }
-
 }
