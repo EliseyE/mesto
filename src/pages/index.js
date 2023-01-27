@@ -36,13 +36,14 @@ const handleCardClick = function(cardInfo) {
 };
 
 const createCard = function(cardData) {
-  return new Card(cardData, cardSelectors, handleCardClick);
+   const newPhotoCard = new Card(cardData, cardSelectors, handleCardClick);
+   return newPhotoCard.getCard()
 };
 
 // add photoCards from array of objects
 const renderer = function (cardData) {
   const newPhotoCard = createCard(cardData);
-  photoCardGallery.addItem(newPhotoCard.getCard());
+  photoCardGallery.addItem(newPhotoCard);
 };
 
 const photoCardGallery = new Section( { items: initialCards,  renderer }, pageConfig.photoCardGallery);
@@ -87,7 +88,7 @@ const popupAddCard = new PopupWithForm(popupCreatePhotoCardSelectors,
       // Далее созданная карточка добавляется. Функция createCard() переиспользована в renderer
       // Получается, что renderer в таком случае здесь не требуется. Исправлено в соотвествии с замечаниями.
     const newPhotoCard = createCard(cardData);
-    photoCardGallery.addItem(newPhotoCard.getCard());
+    photoCardGallery.addItem(newPhotoCard);
     popupAddCard.close();
   }
 );
