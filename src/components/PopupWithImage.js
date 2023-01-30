@@ -11,7 +11,6 @@ export class PopupWithImage extends Popup {
   open(cardInfo) {
     this._writeDataInPopupImage(cardInfo);
     super.open();
-
   }
 
   _writeDataInPopupImage = function (photoCard) {

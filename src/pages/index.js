@@ -84,11 +84,7 @@ const popupAddCard = new PopupWithForm(popupCreatePhotoCardSelectors,
     const cardData =
     { name: currentInputsValues[pageConfig.createPhotoCardNameInput],
       link: currentInputsValues[pageConfig.createPhotoCardLinkInput] };
-      // Функция создания карточки вынесена отдельно в createCard()
-      // Далее созданная карточка добавляется. Функция createCard() переиспользована в renderer
-      // Получается, что renderer в таком случае здесь не требуется. Исправлено в соотвествии с замечаниями.
-    const newPhotoCard = createCard(cardData);
-    photoCardGallery.addItem(newPhotoCard);
+    renderer(cardData)
     popupAddCard.close();
   }
 );
