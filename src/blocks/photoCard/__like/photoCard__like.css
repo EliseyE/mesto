@@ -1,6 +1,8 @@
 .photoCard__like {
-  min-height: 25px;
+  max-width: 35px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
 }
+

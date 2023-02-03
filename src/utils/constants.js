@@ -25,6 +25,7 @@ export const pageConfig = {
   cardLikeButton: '.photoCard__like-button',
   cardLikeButtonActive: 'photoCard__like-button_active',
   cardTrashButton: '.photoCard__trash-button',
+  cardTrashButtonDisabled: 'photoCard__trash-button_disabled',
   photoCardGallery: '.collection__item-list',
   popupEditProfile: '.popup_type_profile',
   profileNameInput: 'profile-name',
@@ -40,7 +41,9 @@ export const pageConfig = {
   photoCardCreateForm: "edit-form_type_create-photoCard",
   changeAvatarForm: "edit-form_type_change-avatar",
   popupСhangeAvatar: '.popup_type_change-avatar',
-  avatarLinkInput: 'change-avatar-link'
+  avatarLinkInput: 'change-avatar-link',
+  cardLikesCounter: '.photoCard__like-counter',
+  editFormSubmitButton: '.edit-form__submit-button'
 };
 
 export const profileEditForm = document.forms[pageConfig.profileEditForm];
@@ -54,12 +57,15 @@ export const cardSelectors = {
   cardImageDescription: pageConfig.cardImageDescription,
   cardLikeButton: pageConfig.cardLikeButton,
   cardLikeButtonActive: pageConfig.cardLikeButtonActive,
-  cardTrashButton: pageConfig.cardTrashButton
+  cardTrashButton: pageConfig.cardTrashButton,
+  cardTrashButtonDisabled: pageConfig.cardTrashButtonDisabled,
+  cardLikesCounter: pageConfig.cardLikesCounter
 };
 
 const editFormSelectors = {
   editForm: pageConfig.editForm,
-  inputSelector: pageConfig.inputSelector
+  inputSelector: pageConfig.inputSelector,
+  submitButton: pageConfig.editFormSubmitButton
 };
 
 const popupSelectors = {
@@ -88,7 +94,7 @@ export const page = document.querySelector(pageConfig.page);
 export const profileEditButton = page.querySelector(pageConfig.profileEditButton);
 export const profileAddPhotoCardButton = page.querySelector(pageConfig.profileAddPhotoCardButton);
 
-export const profileInfo = {
+export const profileInfoSelectors = {
   name: pageConfig.profileName,
   description: pageConfig.profileDescription,
   avatar: pageConfig.profileAvatarImage

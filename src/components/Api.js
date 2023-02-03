@@ -12,11 +12,12 @@ export class Api {
     .catch(err => console.log(err));
   }
 
-  _uploadData(path, data) {
+  _uploadData(path, data, method) {
     return fetch(`${this._baseUrl}${path.path}`, {
+      method: method,
       headers: {
         authorization: this._headers.authorization,
-        'Content-Type': this._headers[Content-Type]
+        'Content-Type': this._headers['Content-Type']
       },
       body: JSON.stringify(data)
     })
@@ -38,7 +39,15 @@ export class Api {
     return this._downloadData({ path: '/users/me' });
   }
 
-  uploadProfileData(data) {
-    return this._uploadData({ path: '/users/me' }, data);
+  // uploadProfileData(data) {
+  //   return this._uploadData({ path: '/users/me' }, data);
+  // }
+
+  uploadCard(cardData) {
+    return this._uploadData({ path: '/cards' }, cardData, 'POST');
+  }
+
+  uploadUserInfo(userInfo) {
+    return this._uploadData({ path: '/users/me' }, userInfo, 'PATCH');
   }
 }

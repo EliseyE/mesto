@@ -39,6 +39,7 @@
 @import url('../blocks/photoCard/__trash-button/photoCard__trash-button.css');
 @import url('../blocks/photoCard/__like/photoCard__like.css');
 @import url('../blocks/photoCard/__like-counter/photoCard__like-counter.css');
+@import url('../blocks/photoCard/__trash-button/_disabled/photoCard__trash-button_disabled.css');
 
 
 /* footer */

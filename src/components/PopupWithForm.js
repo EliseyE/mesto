@@ -8,6 +8,7 @@ export class PopupWithForm extends Popup {
     this._editForm = this._popup.querySelector(popupSelectors.editForm);
     this._inputList = Array.from(this._editForm.querySelectorAll(popupSelectors.inputSelector));
     this._inputsData = {};
+    this._submitButton = this._editForm.querySelector(popupSelectors.submitButton);
   }
 
   _getInputValues() {
@@ -36,5 +37,9 @@ export class PopupWithForm extends Popup {
   close() {
     super.close();
     setTimeout(() => { this._editForm.reset(); }, 100);
+  }
+
+  setSubmitButtonText(text) {
+    this._submitButton.textContent = text;
   }
 }

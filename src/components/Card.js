@@ -1,8 +1,15 @@
 export class Card {
 
-  constructor(cardData, cardSelectors, handleCardClick) {
+  constructor(cardData, cardSelectors, profileId, handleCardClick) {
     this._name = cardData.name;
     this._link = cardData.link;
+    this._id = cardData.id;
+    this._likes = cardData.likes;
+    this._likesQuantity = this._likes.length;
+    this._owner = cardData.owner;
+    this._createdAt = cardData.createdAt;
+    this.profileId = profileId;
+
     this._templateSelector = cardSelectors.cardTemplate;
     this._handleCardClick = handleCardClick;
     this._card = '';
@@ -19,14 +26,22 @@ export class Card {
     const newPhotoCard = this._getTemplate();
     const newPhotoCardImage = newPhotoCard.querySelector(this._selectors.cardImage);
     this._fillCard(newPhotoCard, newPhotoCardImage);
+    this._setTrashButtonActivity(newPhotoCard);
     this._addListeners(newPhotoCard, newPhotoCardImage);
     return newPhotoCard;
   }
+
+  _setTrashButtonActivity = function(card) {
+    if(this.profileId !== this._owner._id) {
+      card.querySelector(this._selectors.cardTrashButton).classList.toggle(this._selectors.cardTrashButtonDisabled);
+    }
+  };
 
   _fillCard = function (card, cardImage) {
     card.querySelector(this._selectors.cardImageDescription).textContent =  this._name;
     cardImage.alt =  this._name;
     cardImage.src = this._link;
+    card.querySelector(this._selectors.cardLikesCounter).textContent =  this._likesQuantity;
   }
 
   _addListeners = function (card, cardImage) {

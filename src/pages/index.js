@@ -12,7 +12,7 @@ import {
   pageConfig,
   profileEditButton,
   profileAddPhotoCardButton,
-  profileInfo,
+  profileInfoSelectors,
   cardSelectors,
   popupEditProfileSelectors,
   popupCreatePhotoCardSelectors,
@@ -31,7 +31,7 @@ import {
 
 // main
 
-const userInfo = new UserInfo(profileInfo);
+const userInfo = new UserInfo(profileInfoSelectors);
 
 // Popup with image
 const popupImage = new PopupWithImage(popupImageSelectors);
@@ -42,8 +42,8 @@ const handleCardClick = function(cardInfo) {
 };
 
 const createCard = function(cardData) {
-   const newPhotoCard = new Card(cardData, cardSelectors, handleCardClick);
-   return newPhotoCard.getCard()
+   const newPhotoCard = new Card(cardData, cardSelectors, userInfo.getUserId(), handleCardClick);
+   return newPhotoCard.getCard();
 };
 
 // add photoCards from array of objects
@@ -56,36 +56,38 @@ const photoCardGallery = new Section(renderer, pageConfig.photoCardGallery);
 
 const apiModule = new Api(apiBaseUrl, apiHeaders);
 
-const makeCardGalleryActual = function() {
-  apiModule.getInitialCards()
-  .then((res) => {
-    photoCardGallery.renderItems(res);
-  });
+const updatePageData = function() {
+  Promise.all([apiModule.getMyProfileData(), apiModule.getInitialCards()])
+    .then(res => {
+      photoCardGallery.renderItems(res[1]);
+      userInfo.setUserInfo(
+              { name: res[0].name,
+                description: res[0].about,
+                avatar: res[0].avatar,
+                id:  res[0]._id
+              });
+    });
 };
 
-makeCardGalleryActual();
-
-const makeUserInfoActual = function() {
-  apiModule.getMyProfileData()
-  .then((res) => {
-    userInfo.setUserInfo(
-      { name: res.name,
-        description: res.about,
-        avatar: res.avatar,
-        id:  res._id
-      });
-  });
-};
-
-makeUserInfoActual();
+updatePageData();
 
 // Profile edit from
 const popupEditProfile = new PopupWithForm(popupEditProfileSelectors,
   (e, currentInputsValues) => {
     e.preventDefault();
+    popupEditProfile.setSubmitButtonText('Сохранение...');
 
-    userInfo.setUserInfo({name: currentInputsValues[pageConfig.profileNameInput], description: currentInputsValues[pageConfig.profileDescriptionInput]});
-    popupEditProfile.close();
+    const userInfoToUpdate =
+    { name: currentInputsValues[pageConfig.profileNameInput],
+      about: currentInputsValues[pageConfig.profileDescriptionInput]};
+    apiModule.uploadUserInfo(userInfoToUpdate)
+      .then(res => {
+        userInfo.setUserInfo(
+        { name: res.name,
+          description: res.about });
+        popupEditProfile.close();
+      })
+      .finally(() => { popupEditProfile.setSubmitButtonText('Сохранить'); });
   }
 );
 popupEditProfile.setEventListeners();
@@ -110,12 +112,17 @@ const openProfileEditForm = function () {
 const popupAddCard = new PopupWithForm(popupCreatePhotoCardSelectors,
   (e, currentInputsValues) => {
     e.preventDefault();
+    popupAddCard.setSubmitButtonText('Создание...');
 
     const cardData =
     { name: currentInputsValues[pageConfig.createPhotoCardNameInput],
       link: currentInputsValues[pageConfig.createPhotoCardLinkInput] };
-    renderer(cardData);
-    popupAddCard.close();
+    apiModule.uploadCard(cardData)
+      .then(res => {
+        renderer(res);
+        popupAddCard.close();
+      })
+      .finally(() => { popupAddCard.setSubmitButtonText('Создать'); });
   }
 );
 popupAddCard.setEventListeners();
