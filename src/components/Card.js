@@ -8,7 +8,7 @@ export class Card {
     this._likesQuantity = this._likes.length;
     this._owner = cardData.owner;
     this._createdAt = cardData.createdAt;
-    this.profileId = profileId;
+    this._profileId = profileId;
 
     this._templateSelector = cardSelectors.cardTemplate;
     this._handleCardClick = handleCardClick;
@@ -32,7 +32,7 @@ export class Card {
   }
 
   _setTrashButtonActivity = function(card) {
-    if(this.profileId !== this._owner._id) {
+    if(this._profileId !== this._owner._id) {
       card.querySelector(this._selectors.cardTrashButton).classList.toggle(this._selectors.cardTrashButtonDisabled);
     }
   };

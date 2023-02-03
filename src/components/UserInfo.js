@@ -29,10 +29,6 @@ export class UserInfo {
   this._profileAvatar.src = link;
   }
 
-  setUserId = function(id) {
-    this._profileId = id;
-  }
-
   getUserId = function() {
     return this._profileId;
   }

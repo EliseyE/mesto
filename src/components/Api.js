@@ -39,15 +39,15 @@ export class Api {
     return this._downloadData({ path: '/users/me' });
   }
 
-  // uploadProfileData(data) {
-  //   return this._uploadData({ path: '/users/me' }, data);
-  // }
-
   uploadCard(cardData) {
     return this._uploadData({ path: '/cards' }, cardData, 'POST');
   }
 
   uploadUserInfo(userInfo) {
     return this._uploadData({ path: '/users/me' }, userInfo, 'PATCH');
+  }
+
+  uploadAvatar(link) {
+    return this._uploadData({ path: '/users/me/avatar' }, link, 'PATCH');
   }
 }

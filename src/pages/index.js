@@ -59,13 +59,13 @@ const apiModule = new Api(apiBaseUrl, apiHeaders);
 const updatePageData = function() {
   Promise.all([apiModule.getMyProfileData(), apiModule.getInitialCards()])
     .then(res => {
-      photoCardGallery.renderItems(res[1]);
       userInfo.setUserInfo(
               { name: res[0].name,
                 description: res[0].about,
                 avatar: res[0].avatar,
                 id:  res[0]._id
               });
+      photoCardGallery.renderItems(res[1]);
     });
 };
 
@@ -135,9 +135,18 @@ const openPhotoCardCreateForm = function () {
 const popupChangeAvatar = new PopupWithForm(popupChangeAvatarSelectors,
   (e, currentInputsValues) => {
     e.preventDefault();
+    popupChangeAvatar.setSubmitButtonText('Сохранение...');
 
-    userInfo.setUserInfo({avatar: currentInputsValues[pageConfig.avatarLinkInput]});
-    popupChangeAvatar.close();
+    const avatar =
+    {avatar: currentInputsValues[pageConfig.avatarLinkInput]};
+    apiModule.uploadAvatar(avatar)
+      .then(res => {
+        console.log(res);
+        userInfo.setUserInfo(
+        { avatar: res.avatar });
+          popupChangeAvatar.close();
+      })
+      .finally(() => { popupChangeAvatar.setSubmitButtonText('Сохранить'); });
   }
 );
 popupChangeAvatar.setEventListeners();
