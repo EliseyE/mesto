@@ -43,7 +43,8 @@ export const pageConfig = {
   popupСhangeAvatar: '.popup_type_change-avatar',
   avatarLinkInput: 'change-avatar-link',
   cardLikesCounter: '.photoCard__like-counter',
-  editFormSubmitButton: '.edit-form__submit-button'
+  editFormSubmitButton: '.edit-form__submit-button',
+  popupDeletePhotoCard: '.popup_type_delete-photoCard'
 };
 
 export const profileEditForm = document.forms[pageConfig.profileEditForm];
@@ -78,6 +79,9 @@ export const popupEditProfileSelectors = Object.assign(
 
 export const popupCreatePhotoCardSelectors = Object.assign(
   { popupSelector: pageConfig.popupCreatePhotoCard }, popupSelectors, editFormSelectors);
+
+export const popupDeletePhotoCardSelectors = Object.assign(
+  { popupSelector: pageConfig.popupDeletePhotoCard }, popupSelectors, editFormSelectors);
 
 export const popupChangeAvatarSelectors = Object.assign(
   { popupSelector: pageConfig.popupСhangeAvatar }, popupSelectors, editFormSelectors);

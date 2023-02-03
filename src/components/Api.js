@@ -50,4 +50,8 @@ export class Api {
   uploadAvatar(link) {
     return this._uploadData({ path: '/users/me/avatar' }, link, 'PATCH');
   }
+
+  deletCard(cardId) {
+    return this._uploadData({ path: `/cards/${cardId}` }, {}, 'DELETE');
+  }
 }

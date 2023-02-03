@@ -1,9 +1,9 @@
 export class Card {
 
-  constructor(cardData, cardSelectors, profileId, handleCardClick) {
+  constructor(cardData, cardSelectors, profileId, handleCardClick, handleTrashButtonClick) {
     this._name = cardData.name;
     this._link = cardData.link;
-    this._id = cardData.id;
+    this._id = cardData._id;
     this._likes = cardData.likes;
     this._likesQuantity = this._likes.length;
     this._owner = cardData.owner;
@@ -14,6 +14,7 @@ export class Card {
     this._handleCardClick = handleCardClick;
     this._card = '';
     this._selectors = cardSelectors;
+    this._handleTrashButtonClick = handleTrashButtonClick;
   }
 
   _getTemplate() {
@@ -33,7 +34,9 @@ export class Card {
 
   _setTrashButtonActivity = function(card) {
     if(this._profileId !== this._owner._id) {
-      card.querySelector(this._selectors.cardTrashButton).classList.toggle(this._selectors.cardTrashButtonDisabled);
+      const submitButton = card.querySelector(this._selectors.cardTrashButton);
+      submitButton.classList.toggle(this._selectors.cardTrashButtonDisabled);
+      submitButton.disabled = 'disabled';
     }
   };
 
@@ -46,7 +49,7 @@ export class Card {
 
   _addListeners = function (card, cardImage) {
     card.querySelector(this._selectors.cardLikeButton).addEventListener('click', this._toggleCardLike.bind(this));
-    card.querySelector(this._selectors.cardTrashButton).addEventListener('click', () => this._deleteCard());
+    card.querySelector(this._selectors.cardTrashButton).addEventListener('click', () => this._handleTrashButtonClick(this));
     cardImage.addEventListener('click', () => this._handleCardClick({name: this._name, link: this._link}));
   }
 
@@ -54,7 +57,11 @@ export class Card {
     evt.target.classList.toggle(this._selectors.cardLikeButtonActive);
   }
 
-  _deleteCard = function () {
+  getCardId = function() {
+    return this._id;
+  }
+
+  deleteCard = function () {
     this._card.remove();
     this._card = null;
   }

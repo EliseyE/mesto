@@ -8,6 +8,7 @@ import { Popup } from '../components/Popup.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo.js';
+import { PopupConfirmForm } from '../components/PopupConfirmForm.js';
 import {
   pageConfig,
   profileEditButton,
@@ -21,7 +22,8 @@ import {
   apiHeaders,
   apiBaseUrl,
   profileAvatar,
-  profileAvatarImage
+  profileAvatarImage,
+  popupDeletePhotoCardSelectors
 }  from '../utils/constants.js';
 import {
   profileEditFormValidator,
@@ -41,8 +43,12 @@ const handleCardClick = function(cardInfo) {
   popupImage.open(cardInfo);
 };
 
+const handleTrashButtonClick = function(card) {
+  popupDeletePhotoCard.open(card);
+}
+
 const createCard = function(cardData) {
-   const newPhotoCard = new Card(cardData, cardSelectors, userInfo.getUserId(), handleCardClick);
+   const newPhotoCard = new Card(cardData, cardSelectors, userInfo.getUserId(), handleCardClick, handleTrashButtonClick);
    return newPhotoCard.getCard();
 };
 
@@ -141,7 +147,6 @@ const popupChangeAvatar = new PopupWithForm(popupChangeAvatarSelectors,
     {avatar: currentInputsValues[pageConfig.avatarLinkInput]};
     apiModule.uploadAvatar(avatar)
       .then(res => {
-        console.log(res);
         userInfo.setUserInfo(
         { avatar: res.avatar });
           popupChangeAvatar.close();
@@ -155,6 +160,23 @@ const openChangeAvatarForm = function () {
   ChangeAvatarFormValidator.resetFormState();
   popupChangeAvatar.open();
 };
+
+const popupDeletePhotoCard = new PopupConfirmForm(popupDeletePhotoCardSelectors,
+  (e, card) => {
+    e.preventDefault();
+    popupDeletePhotoCard.setSubmitButtonText('Удаление...');
+
+    const cardId = card.getCardId();
+    apiModule.deletCard(cardId)
+      .then(res => {
+        card.deleteCard();
+        popupDeletePhotoCard.close();
+      })
+      .finally(() => { popupDeletePhotoCard.setSubmitButtonText('Да'); });
+  }
+);
+popupDeletePhotoCard.setEventListeners();
+
 
 // listeners
 // profile
