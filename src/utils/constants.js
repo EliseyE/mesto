@@ -1,30 +1,9 @@
-export const initialCards = [
-  // put last object in the end of array
-  {
-    name: 'Сузунское месторождение',
-    link: 'https://live.staticflickr.com/65535/52524339705_69c9911025_k.jpg'
-  },
-  {
-    name: 'Москва',
-    link: 'https://live.staticflickr.com/65535/52524141604_bd89708abb_k.jpg'
-  },
-  {
-    name: 'Питер',
-    link: 'https://live.staticflickr.com/65535/52523860251_49f3b0fb2a_k.jpg'
-  },
-  {
-    name: 'Урал. Соколиный камень',
-    link: 'https://live.staticflickr.com/65535/52524339695_b2cabb0d8d_k.jpg'
-  },
-  {
-    name: 'Волга',
-    link: 'https://live.staticflickr.com/65535/52523394012_8a799ab47d_k.jpg'
-  },
-  {
-    name: 'Сургут',
-    link: 'https://live.staticflickr.com/65535/52524339710_4783c5abb5_k.jpg'
-  }
-];
+export const apiHeaders = {
+  authorization: 'e7f60b85-9e30-4602-89c2-652f79ad0c99',
+  'Content-Type': 'application/json'
+}
+export const apiBaseUrl = 'https://mesto.nomoreparties.co/v1/cohort-59';
+
 
 // pageConfig
 export const pageConfig = {
@@ -33,6 +12,8 @@ export const pageConfig = {
   profileAddPhotoCardButton: '.profile__add-button',
   profileName: '.profile__name',
   profileDescription: '.profile__description',
+  profileAvatar: '.profile__avatar',
+  profileAvatarImage: '.profile__avatar-image',
   collectionItemList: '.collection__item-list',
   popupImage: '.popup_type_image',
   popupImagePhoto: '.figure-space__image',
@@ -48,7 +29,7 @@ export const pageConfig = {
   popupEditProfile: '.popup_type_profile',
   profileNameInput: 'profile-name',
   profileDescriptionInput: 'profile-description',
-  popopupCreatePhotoCard: '.popup_type_create-photoCard',
+  popupCreatePhotoCard: '.popup_type_create-photoCard',
   createPhotoCardNameInput: 'create-photoCard-name',
   createPhotoCardLinkInput: 'create-photoCard-link',
   popupIsOpened: 'popup_is-opened',
@@ -56,11 +37,15 @@ export const pageConfig = {
   editForm: '.edit-form',
   inputSelector: '.edit-form__input',
   profileEditForm: "edit-form_type_profile",
-  photoCardCreateForm: "edit-form_type_create-photoCard"
+  photoCardCreateForm: "edit-form_type_create-photoCard",
+  changeAvatarForm: "edit-form_type_change-avatar",
+  popupСhangeAvatar: '.popup_type_change-avatar',
+  avatarLinkInput: 'change-avatar-link'
 };
 
 export const profileEditForm = document.forms[pageConfig.profileEditForm];
 export const photoCardCreateForm = document.forms[pageConfig.photoCardCreateForm];
+export const changeAvatarForm = document.forms[pageConfig.changeAvatarForm];
 
 export const cardSelectors = {
   cardTemplate: pageConfig.photoCardId,
@@ -86,7 +71,10 @@ export const popupEditProfileSelectors = Object.assign(
   { popupSelector: pageConfig.popupEditProfile }, popupSelectors, editFormSelectors);
 
 export const popupCreatePhotoCardSelectors = Object.assign(
-  { popupSelector: pageConfig.popopupCreatePhotoCard }, popupSelectors, editFormSelectors);
+  { popupSelector: pageConfig.popupCreatePhotoCard }, popupSelectors, editFormSelectors);
+
+export const popupChangeAvatarSelectors = Object.assign(
+  { popupSelector: pageConfig.popupСhangeAvatar }, popupSelectors, editFormSelectors);
 
 export const popupImageSelectors = Object.assign(
   { popupSelector: pageConfig.popupImage,
@@ -102,7 +90,9 @@ export const profileAddPhotoCardButton = page.querySelector(pageConfig.profileAd
 
 export const profileInfo = {
   name: pageConfig.profileName,
-  description: pageConfig.profileDescription
+  description: pageConfig.profileDescription,
+  avatar: pageConfig.profileAvatarImage
 };
 
 export const collectionItemList = page.querySelector(pageConfig.collectionItemList);
+export const profileAvatar = page.querySelector(pageConfig.profileAvatar);
