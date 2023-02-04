@@ -54,4 +54,12 @@ export class Api {
   deletCard(cardId) {
     return this._uploadData({ path: `/cards/${cardId}` }, {}, 'DELETE');
   }
+
+  likeCard(cardId) {
+    return this._uploadData({ path: `/cards/${cardId}/likes` }, {}, 'PUT');
+  }
+
+  unlikeCard(cardId) {
+    return this._uploadData({ path: `/cards/${cardId}/likes` }, {}, 'DELETE');
+  }
 }

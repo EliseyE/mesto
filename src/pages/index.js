@@ -22,7 +22,6 @@ import {
   apiHeaders,
   apiBaseUrl,
   profileAvatar,
-  profileAvatarImage,
   popupDeletePhotoCardSelectors
 }  from '../utils/constants.js';
 import {
@@ -47,8 +46,32 @@ const handleTrashButtonClick = function(card) {
   popupDeletePhotoCard.open(card);
 }
 
+const handleLikeButtonClick = function(card, iLiked) {
+  const cardId = card.getCardId();
+  if(iLiked) {
+    apiModule.unlikeCard(cardId)
+    .then(res => {
+      card.updateCardLikes(res.likes);
+      card.setInitialLike(card);
+    });
+  }
+    else {
+    apiModule.likeCard(cardId)
+    .then(res => {
+      card.updateCardLikes(res.likes);
+      card.setInitialLike(card);
+    });
+  }
+}
+
 const createCard = function(cardData) {
-   const newPhotoCard = new Card(cardData, cardSelectors, userInfo.getUserId(), handleCardClick, handleTrashButtonClick);
+   const newPhotoCard = new Card(
+    cardData,
+    cardSelectors,
+    userInfo.getUserId(),
+    handleCardClick,
+    handleTrashButtonClick,
+    handleLikeButtonClick);
    return newPhotoCard.getCard();
 };
 
@@ -168,7 +191,7 @@ const popupDeletePhotoCard = new PopupConfirmForm(popupDeletePhotoCardSelectors,
 
     const cardId = card.getCardId();
     apiModule.deletCard(cardId)
-      .then(res => {
+      .then(() => {
         card.deleteCard();
         popupDeletePhotoCard.close();
       })
@@ -176,7 +199,6 @@ const popupDeletePhotoCard = new PopupConfirmForm(popupDeletePhotoCardSelectors,
   }
 );
 popupDeletePhotoCard.setEventListeners();
-
 
 // listeners
 // profile
