@@ -19,8 +19,6 @@ import {
   popupCreatePhotoCardSelectors,
   popupChangeAvatarSelectors,
   popupImageSelectors,
-  apiHeaders,
-  apiBaseUrl,
   profileAvatar,
   popupDeletePhotoCardSelectors
 }  from '../utils/constants.js';
