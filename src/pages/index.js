@@ -27,7 +27,8 @@ import {
 import {
   profileEditFormValidator,
   photoCardCreateFormValidator,
-  ChangeAvatarFormValidator
+  ChangeAvatarFormValidator,
+  apiModule
 } from '../utils/utils.js';
 
 // main
@@ -83,8 +84,6 @@ const renderer = function (cardData) {
 
 const photoCardGallery = new Section(renderer, pageConfig.photoCardGallery);
 
-const apiModule = new Api(apiBaseUrl, apiHeaders);
-
 const updatePageData = function() {
   Promise.all([apiModule.getMyProfileData(), apiModule.getInitialCards()])
     .then(res => {
@@ -97,7 +96,6 @@ const updatePageData = function() {
       photoCardGallery.renderItems(res[1]);
     });
 };
-
 updatePageData();
 
 // Profile edit from
