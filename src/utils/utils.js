@@ -1,6 +1,7 @@
 import { FormValidator } from '../components/FormValidator.js';
 import validationConfig from './validationConfig.js';
 import {profileEditForm, photoCardCreateForm, changeAvatarForm} from './constants.js';
+import { Api } from '../components/Api';
 
 const profileEditFormValidator = new FormValidator(validationConfig, profileEditForm);
 profileEditFormValidator.enableValidation();
@@ -11,4 +12,8 @@ photoCardCreateFormValidator.enableValidation();
 const ChangeAvatarFormValidator = new FormValidator(validationConfig, changeAvatarForm);
 ChangeAvatarFormValidator.enableValidation();
 
-export {profileEditFormValidator, photoCardCreateFormValidator, ChangeAvatarFormValidator};
+export {
+  profileEditFormValidator,
+  photoCardCreateFormValidator,
+  ChangeAvatarFormValidator
+};
