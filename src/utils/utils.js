@@ -13,14 +13,14 @@ profileEditFormValidator.enableValidation();
 const photoCardCreateFormValidator = new FormValidator(validationConfig, photoCardCreateForm);
 photoCardCreateFormValidator.enableValidation();
 
-const ChangeAvatarFormValidator = new FormValidator(validationConfig, changeAvatarForm);
-ChangeAvatarFormValidator.enableValidation();
+const changeAvatarFormValidator = new FormValidator(validationConfig, changeAvatarForm);
+changeAvatarFormValidator.enableValidation();
 
 const apiModule = new Api(apiBaseUrl, apiHeaders);
 
 export {
   profileEditFormValidator,
   photoCardCreateFormValidator,
-  ChangeAvatarFormValidator,
+  changeAvatarFormValidator,
   apiModule
 };

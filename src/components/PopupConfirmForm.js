@@ -15,10 +15,6 @@ export class PopupConfirmForm extends Popup {
     super.open();
   }
 
-  close() {
-    super.close();
-  }
-
   setEventListeners() {
     super.setEventListeners();
     this._editForm.addEventListener('submit', (e) => this._submitForm(e, this._currentItem));

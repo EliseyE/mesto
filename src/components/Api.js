@@ -9,7 +9,6 @@ export class Api {
       headers: { authorization: this._headers.authorization }
     })
     .then(res => {return this._responceProcessing(res)})
-    .catch(err => console.log(err));
   }
 
   _uploadData(path, data, method) {
@@ -22,7 +21,6 @@ export class Api {
       body: JSON.stringify(data)
     })
     .then(res => {return this._responceProcessing(res)})
-    .catch(err => console.log(err));
   }
 
   _responceProcessing(res) {

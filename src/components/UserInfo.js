@@ -15,18 +15,14 @@ export class UserInfo {
   }
 
   setUserInfo = function(data) {
-  if(data.name !== undefined)
-    this._profileName.textContent = data.name;
-  if(data.description !== undefined)
-    this._profileDescription.textContent = data.description;
-  if(data.id !== undefined)
-    this._profileId = data.id;
-  if(data.avatar !== undefined)
-    this._profileAvatar.src = data.avatar;
-  }
-
-  setUserAvatar = function(link) {
-  this._profileAvatar.src = link;
+    if(data.name)
+      this._profileName.textContent = data.name;
+    if(data.description)
+      this._profileDescription.textContent = data.description;
+    if(data.id)
+      this._profileId = data.id;
+    if(data.avatar)
+      this._profileAvatar.src = data.avatar;
   }
 
   getUserId = function() {

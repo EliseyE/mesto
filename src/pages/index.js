@@ -25,7 +25,7 @@ import {
 import {
   profileEditFormValidator,
   photoCardCreateFormValidator,
-  ChangeAvatarFormValidator,
+  changeAvatarFormValidator,
   apiModule
 } from '../utils/utils.js';
 
@@ -52,14 +52,16 @@ const handleLikeButtonClick = function(card, iLiked) {
     .then(res => {
       card.updateCardLikes(res.likes);
       card.setInitialLike(card);
-    });
+    })
+    .catch(err => console.log(err));
   }
     else {
     apiModule.likeCard(cardId)
     .then(res => {
       card.updateCardLikes(res.likes);
       card.setInitialLike(card);
-    });
+    })
+    .catch(err => console.log(err));
   }
 }
 
@@ -92,7 +94,8 @@ const updatePageData = function() {
                 id:  res[0]._id
               });
       photoCardGallery.renderItems(res[1]);
-    });
+    })
+    .catch(err => console.log(err));
 };
 updatePageData();
 
@@ -112,6 +115,7 @@ const popupEditProfile = new PopupWithForm(popupEditProfileSelectors,
           description: res.about });
         popupEditProfile.close();
       })
+      .catch(err => console.log(err))
       .finally(() => { popupEditProfile.setSubmitButtonText('Сохранить'); });
   }
 );
@@ -147,6 +151,7 @@ const popupAddCard = new PopupWithForm(popupCreatePhotoCardSelectors,
         renderer(res);
         popupAddCard.close();
       })
+      .catch(err => console.log(err))
       .finally(() => { popupAddCard.setSubmitButtonText('Создать'); });
   }
 );
@@ -170,13 +175,14 @@ const popupChangeAvatar = new PopupWithForm(popupChangeAvatarSelectors,
         { avatar: res.avatar });
           popupChangeAvatar.close();
       })
+      .catch(err => console.log(err))
       .finally(() => { popupChangeAvatar.setSubmitButtonText('Сохранить'); });
   }
 );
 popupChangeAvatar.setEventListeners();
 
 const openChangeAvatarForm = function () {
-  ChangeAvatarFormValidator.resetFormState();
+  changeAvatarFormValidator.resetFormState();
   popupChangeAvatar.open();
 };
 
@@ -191,6 +197,7 @@ const popupDeletePhotoCard = new PopupConfirmForm(popupDeletePhotoCardSelectors,
         card.deleteCard();
         popupDeletePhotoCard.close();
       })
+      .catch(err => console.log(err))
       .finally(() => { popupDeletePhotoCard.setSubmitButtonText('Да'); });
   }
 );
